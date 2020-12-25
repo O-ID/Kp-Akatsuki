@@ -373,12 +373,12 @@
             $('#forkendaraan').val($(this).val()).text($(this).text());
         });
         $('.dateSis').datepicker({
-          format: "mm/dd/yyyy",
+          format: "yyyy-mm-dd",
           startView: 2,
           clearBtn: true,
           language: "id"
         }).on('changeDate', function(e) {
-          $('.vlDate').val($(".dateSis").data('datepicker').getFormattedDate('mm/dd/yyyy'));
+          $('.vlDate').val($(".dateSis").data('datepicker').getFormattedDate('yyyy-mm-dd'));
         });
       });
       //form wizard

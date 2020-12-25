@@ -73,7 +73,7 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Tanggal Lahir</label>
-                                        <input readonly class="form-control-plaintext text-light vlDate" name="tglLahir" type="text" placeholder="mm/dd/yyyy" required>
+                                        <input readonly class="form-control-plaintext text-light vlDate" name="tglLahir" type="text" placeholder="yyyy-mm-dd" required>
                                         <div class="dateSis"></div>
                                     </div>
                                 </div>
@@ -130,19 +130,19 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating pt-4">No. Telpon Rumah</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" class="form-control" name="notelprumahsiswa" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating pt-4">No.Hp</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" class="form-control" name="nohpsiswa" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <label class="bmd-label-floating">Jenis Tinggal</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="jenistinggal" required>
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Email</label>
@@ -153,13 +153,19 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">NIK KTP</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" class="form-control" name="nikktp" required>
+                                    </div>
+                                </div>
+                                <div class="row pt-4">
+                                    <div class="col-sm-12">
+                                        <label class="bmd-label-floating">Berkebutuhan Khusus</label>
+                                        <input type="text" class="form-control" name="kebutuhansiswa" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-section">
+                    {{-- <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">NISN</label>
@@ -168,6 +174,12 @@
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">NIS</label>
                                         <input class="form-control" type="number" placeholder="*Diisikan Data Dari Jenjang Sebelumnya" name="nis" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="row pt-4">
+                                    <div class="col-sm-12">
+                                        <label class="bmd-label-floating">No. SKHUN</label>
+                                        <input class="form-control" type="number" placeholder="*Diisikan Data Dari Jenjang Sebelumnya" name="skhun" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +231,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="bmd-label-floating">No. KIP</label>
-                                    <input type="text" class="form-control" name="alasanlayak" placeholder="No. KIP Diisi Jika Ada Di Sini">
+                                    <input type="text" class="form-control" name="nokip" placeholder="No. KIP Diisi Jika Ada Di Sini">
                                 </div>
                             </div>
                             <div class="row pt-4">
@@ -421,7 +433,7 @@
                             </div>
                             <div class="col-sm-3"></div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-section">
                         <div class="row">
                             <div class="col-sm-3"></div>
@@ -452,17 +464,6 @@
                                 <input type="number" class="form-control" name="sodara" placeholder="Contoh: 2">
                             </div>
                             <div class="col-sm-3"></div>
-                            {{-- <input class="form-control d-none" type="text" name="forjk" id="forjk" required>
-                                <div class="dropdown">
-                                    <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="Jksiswa" value="" id="dropdownMenuButtonjk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
-                                        Pilih Jenis Kelamin
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonjk">
-                                        <option class="dropdown-item jk" value="L">Laki-Laki</option>
-                                        <option class="dropdown-item jk" value="P">Perempuan</option>
-                                        <option class="dropdown-item jk" value="D">Lainnya</option>
-                                    </div>
-                                </div> --}}
                         </div>
                     </div>
                     <div class="navnav">
