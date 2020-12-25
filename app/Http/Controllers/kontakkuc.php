@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\kontakku;
+use App\modJangka;
+use App\modJurusan;
+use App\modOrtu;
+use App\modPendaftar;
+use App\modRegistrasi;
+use App\modTapel;
+use App\modWali;
 use Illuminate\Http\Request;
 
 class kontakkuc extends Controller
@@ -35,9 +42,13 @@ class kontakkuc extends Controller
      */
     public function store(Request $request)
     {
-        return $request->forjk;//name dari input
-        // return $request->all();
-        return redirect('/') -> with('status', 'Sukses Input Data');
+        $hasil= $request->tbpesertadidik.', ';//name dari input tbpesertadidik,beratbadan,jarakrumahsiswa,wtks,sodara
+        $hasil.= $request->beratbadan.', ';
+        $hasil.= $request->jarakrumahsiswa.', ';
+        $hasil.= $request->wtks.', ';
+        $hasil.= $request->forjk;
+        return $request->all();
+        // return redirect('/') -> with('status', 'Sukses Input Data '.$hasil);
     }
 
     /**

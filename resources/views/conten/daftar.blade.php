@@ -13,7 +13,7 @@
             <div class="card-body">
                 <form class="contak-form" method="post" action="{{ route ('form.formSubmit') }}" autocomplete="false" data-parsley-validate>
                     @csrf
-                    <!-- <div class="form-section">
+                    <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">Nama Lengkap</label>
@@ -80,7 +80,6 @@
                             </div>
                             <div class="col-sm-2">
                                 <label class="bmd-label-floating">Jenis Kelamin</label>
-                                <input class="form-control d-none" type="text" name="forjk" id="forjk" required>
                                 <div class="dropdown">
                                     <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="Jksiswa" value="" id="dropdownMenuButtonjk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
                                         Pilih Jenis Kelamin
@@ -91,10 +90,10 @@
                                         <option class="dropdown-item jk" value="D">Lainnya</option>
                                     </div>
                                 </div>
+                                <input class="form-control d-none" type="text" name="forjk" id="forjk" required>
                                 <div class="row pt-3">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Agama</label>
-                                        <input class="form-control d-none" type="text" name="foragama" id="foragama" required>
                                         <div class="dropdown">
                                             <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="agama" value="" id="dropdownMenuButtonag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
                                                 Pilih Agama
@@ -107,6 +106,7 @@
                                                 <option class="dropdown-item ag" value="buddha">Buddha</option>
                                             </div>
                                         </div>
+                                        <input class="form-control d-none" type="text" name="foragama" id="foragama" required>
                                     </div>
                                 </div>
                                 <div class="row pt-4">
@@ -146,8 +146,8 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Email</label>
-                                        {{-- @error('email') has-danger @enderror --}}
                                         <input type="email" data-parsley-type="email" class="form-control" name="email" required autofocus>
+                                        @error('email') has-danger @enderror
                                     </div>
                                 </div>
                                 <div class="row pt-4">
@@ -421,7 +421,7 @@
                             </div>
                             <div class="col-sm-3"></div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="form-section">
                         <div class="row">
                             <div class="col-sm-3"></div>
@@ -452,7 +452,7 @@
                                 <input type="number" class="form-control" name="sodara" placeholder="Contoh: 2">
                             </div>
                             <div class="col-sm-3"></div>
-                            <input class="form-control d-none" type="text" name="forjk" id="forjk" required>
+                            {{-- <input class="form-control d-none" type="text" name="forjk" id="forjk" required>
                                 <div class="dropdown">
                                     <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="Jksiswa" value="" id="dropdownMenuButtonjk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
                                         Pilih Jenis Kelamin
@@ -462,16 +462,16 @@
                                         <option class="dropdown-item jk" value="P">Perempuan</option>
                                         <option class="dropdown-item jk" value="D">Lainnya</option>
                                     </div>
-                                </div>
+                                </div> --}}
                         </div>
                     </div>
                     <div class="navnav">
-                        <button type="button" class="btn btn-secondary pull-right nekt">Selanjutnya</button>
-                        <button type="button" class="btn btn-danger pull-left preve">Sebelumnya</button>
-                        <button type="submit" class="btn btn-success pull-right simpan">Simpan</button>
+                        <button type="button" class="btn btn-warning pull-right nekt">Selanjutnya</button>
+                        <button type="button" class="btn btn-warning pull-left preve">Sebelumnya</button>
+                        <button type="submit" class="btn btn-warning pull-right simpan">Simpan</button>
                         <div class="clearfix"></div>
                     </div>
-                </form>   
+                </form>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -491,25 +491,31 @@ $(function(){
        }else{
            $('.kps input').removeAttr('required');
            $('.form-section .kps').removeClass('current');
-       } 
+       }
     });
     $('#pendayah .dropdown-menu a').click(function(){
         $('#pendayah button').text($(this).text()).val($(this).text());
+        $('#forpendayah').text($(this).text()).val($(this).text());
     });
     $('#penghayah .dropdown-menu a').click(function(){
         $('#penghayah button').text($(this).text()).val($(this).text());
+        $('#forpenghayah').text($(this).text()).val($(this).text());
     });
     $('#pendibu .dropdown-menu a').click(function(){
         $('#pendibu button').text($(this).text()).val($(this).text());
+        $('#forpendibu').text($(this).text()).val($(this).text());
     });
     $('#penghibu .dropdown-menu a').click(function(){
         $('#penghibu button').text($(this).text()).val($(this).text());
+        $('#forpenghibu').text($(this).text()).val($(this).text());
     });
     $('#pendwali .dropdown-menu a').click(function(){
         $('#pendwali button').text($(this).text()).val($(this).text());
+        $('#forpendwali').text($(this).text()).val($(this).text());
     });
     $('#penghwali .dropdown-menu a').click(function(){
         $('#penghwali button').text($(this).text()).val($(this).text());
+        $('#forpenghwali').text($(this).text()).val($(this).text());
     });
 });
 </script>

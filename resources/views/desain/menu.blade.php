@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/assets/datepick/css/bootstrap-datepicker3.min.css">
   <link rel="stylesheet" href="/assets/css/perfect-scrollbar.min.css">
   <link href="/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-  
+
   <style>
     .form-section{
       display: none;
@@ -136,7 +136,7 @@
                       Account
                     </p>
                   </a>
-                  
+
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <div class="container">
                       <form class="my-3" method="post" action="{{ url ('/') }}" autocomplete="false">
@@ -174,13 +174,13 @@
   </div>
 
   <!--   Core JS Files   -->
-  
+
   <script src="/assets/js/core/popper.min.js"></script>
   <script src="/assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="/assets/js/index.umd.js"></script>
   <!-- <script src="https://unpkg.com/default-passive-events"></script> -->
   <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  
+
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
@@ -190,7 +190,7 @@
   <!--  Notifications Plugin    -->
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/assets/js/material-dashboard.js?v=2.1.0"></script>
-  
+
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   {{-- <script src="/assets/demo/demo.js"></script> --}}
   <script src="/assets/js/plugins/parsley.min.js"></script>
@@ -365,10 +365,12 @@
         $('.dropdown .dropdown-menu .ag').click(function() {
             // alert($(this).val());
             $('.dropdown #dropdownMenuButtonag').val($(this).val()).text($(this).text());
+            $('#foragama').val($(this).val()).text($(this).text());
         });
         $('.dropdown .dropdown-menu .kd').click(function() {
             // alert($(this).val());
             $('.dropdown #dropdownMenuButtonkd').val($(this).val()).text($(this).text());
+            $('#forkendaraan').val($(this).val()).text($(this).text());
         });
         $('.dateSis').datepicker({
           format: "mm/dd/yyyy",
@@ -381,7 +383,7 @@
       });
       //form wizard
       var $section=$('.form-section');
-        
+
         function navigateTo(index){
             $section.removeClass('current').eq(index).addClass('current');
             $('.navnav .preve').toggle(index>0);
@@ -410,7 +412,6 @@
 
         });
         navigateTo(0);
-        
     });
   </script>
   <script>
