@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class kontakkuc extends Controller
 {
     /**
-     * Display a listing of the resourcee.
+     * Display a listing of the resourceee.
      *
      * @return \Illuminate\Http\Response
      */
