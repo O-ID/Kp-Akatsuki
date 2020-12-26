@@ -13,7 +13,7 @@
             <div class="card-body">
                 <form class="contak-form" method="post" action="{{ route ('form.formSubmit') }}" autocomplete="false" data-parsley-validate>
                     @csrf
-                    <div class="form-section">
+                    {{-- <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">Nama Lengkap</label>
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
