@@ -14,6 +14,12 @@ use App\Http\Controllers\kontakkuc;
 Route::get('/', function () {
     return view('page.index');
 });
+Route::get('/denah', function () {
+    return view('page.denah');
+});
+Route::get('/struktur', function () {
+    return view('page.struktur');
+});
 Route::resource('/table', 'kontakkuc');
 Route::get('/daftar', 'kontakkuc@daftar');
 Route::post('/table/store','kontakkuc@store')->name('form.formSubmit');
