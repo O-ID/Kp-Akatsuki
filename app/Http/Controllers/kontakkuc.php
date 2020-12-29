@@ -21,8 +21,11 @@ class kontakkuc extends Controller
      */
     public function index()
     {
-        $data = kontakku::all();
-        return view('page.table', compact('data'));
+        $data = modJangka::select('mulai', 'selesai')
+                ->join('tapel', 'tapel.id_tapel', '=', 'jangka_daftar.id_tapel')
+                ->where('tapel.status', 1)
+                ->get();
+        return view('page.index', ['data' => $data]);
     }
 
     /**
@@ -42,12 +45,41 @@ class kontakkuc extends Controller
      */
     public function store(Request $request)
     {
-        // $hasil= $request->tbpesertadidik.', ';//name dari input tbpesertadidik,beratbadan,jarakrumahsiswa,wtks,sodara
-        // return $request->all();
+        $ortu=new modOrtu();
+        $ortu->nama_ayah=$request->namaayah;
+        $ortu->pekerjaan_ayah=$request->pekerjaanayah;
+        $ortu->kebutuhan_khusus_ayah=$request->Kebutuhankhusus;
+        $ortu->pendidikan_ayah=$request->forpendayah;
+        $ortu->penghasilan_ayah=$request->forpenghayah;
+        $ortu->thn_lahir_ayah=$request->thnayah;
+        $ortu->nama_ibu=$request->namaibu;
+        $ortu->pekerjaan_ibu=$request->pekerjaanibu;
+        $ortu->kebutuhan_khusus_ibu=$request->Kebutuhankhususibu;
+        $ortu->pendidikan_ibu=$request->forpendibu;
+        $ortu->penghasilan_ibu=$request->forpenghibu;
+        $ortu->thn_lahir_ibu=$request->thnibu;
+        $ortu->save();
+        $idortu=$ortu->id;
+
+        //wali
+        $wali=new modWali();
+        $wali->nama_wali=$request->namawali;
+        $wali->pekerjaan_wali=$request->pekerjaanwali;
+        $wali->pendidikan_wali=$request->forpendwali;
+        $wali->penghasilan_wali=$request->forpenghwali;
+        $wali->thn_wali=$request->thnwali;
+        $wali->save();
+        $idwali=$wali->id;
+
+        //get data tapel
+        $tapelid=modTapel::select('tapel.id_tapel')->where('tapel.status', 1)->get();
+
+        //siswa
         $data= new modPendaftar();
-        // $data->id_pendaftar=null;
-        $data->id_jurusan=1;
-        $data->id_ortu=1;
+        $data->id_jurusan=$request->forjurusan;//jurusan
+        $data->id_ortu=$idortu;//ortu
+        $data->id_tapel=$tapelid[0]->id_tapel;//tapel
+        $data->id_wali=$idwali;//wali
         $data->nama_lengkap=$request->nama;
         $data->jk=$request->forjk;
         $data->nisn=$request->nisn;
@@ -84,7 +116,7 @@ class kontakkuc extends Controller
         $data->tinggi_badan=$request->tbpesertadidik;
         $data->berat_badan=$request->beratbadan;
         $data->jarak_sekolah=$request->jarakrumahsiswa;
-        $data->waktu_tempuh_sekolah=$request->wtks.'00';
+        $data->waktu_tempuh_sekolah=$request->wtks;
         $data->jumlah_saudara=$request->sodara;
 
         if($data->save()){
@@ -92,52 +124,7 @@ class kontakkuc extends Controller
         }else{
             return redirect()->back();
         }
-        // echo $data->id;
-        // $hasil= DB::table('pendaftar')->insertGetId([
-        //     'nama_lengkap'=>$request->nama,
-        //     'jk'=>$request->forjk,
-        //     'nisn'=>$request->nisn,
-        //     'nis'=>$request->nis,
-        //     'no_seri_ijazah'=>$request->noseriijasah,
-        //     'no_seri_skhun'=>$request->skhun,
-        //     'no_un'=>$request->nunasional,
-        //     'nik'=>$request->nikktp,
-        //     'npsn_sekolah_asal'=>$request->npsn,
-        //     'tmpt_lahir'=>$request->tmptlahirsiswa,
-        //     'tgl_lahir'=>$request->tglLahir,
-        //     'agama'=>$request->foragama,
-        //     'berkebutuhan_khusus'=>$request->kebutuhansiswa,
-        //     'alamat_asal'=>$request->alamat,
-        //     'dusun'=>$request->dusun,
-        //     'rt_rw'=>$request->rt."/".$request->rw,
-        //     'desa'=>$request->kelurahan,
-        //     'kecamatan'=>$request->kecamatan,
-        //     'kota'=>$request->kabupaten,
-        //     'provinsi'=>$request->provinsi,
-        //     'jenis_tinggal'=>$request->jenistinggal,
-        //     'no_telp_rumah'=>$request->notelprumahsiswa,
-        //     'no_hp'=>$request->nohpsiswa,
-        //     'email'=>$request->email,
-        //     'no_kks'=>$request->nokks,
-        //     'no_kps'=>$request->kps,
-        //     'alasan_layak'=>$request->alasanlayak,
-        //     'no_kip'=>$request->nokip,
-        //     'nama_kip'=>$request->namakip,
-        //     'alasan_tolak_kip'=>$request->tolakkip,
-        //     'no_rek_akta_lahir'=>$request->aktalahir,
-        //     'lintang'=>$request->lintang,
-        //     'bujur'=>$request->Bujur,
-        //     'tinggi_badan'=>$request->tbpesertadidik,
-        //     'berat_badan'=>$request->beratbadan,
-        //     'jarak_sekolah'=>$request->jarakrumahsiswa,
-        //     'waktu_tempuh_sekolah'=>$request->wtks,
-        //     'jumlah_saudara'=>$request->sodara,
-        // ]);
-        // if($hasil!=0){
-        //     return redirect('/') -> with('status', 'Selamat '.$request->nama.' Pendaftaranmu Telah Kami Terima, Mohon Tunggu Pengumuman Selanjutnya.');
-        // }else{
-        //     return redirect()->back();
-        // }
+        // return $request->all();
     }
 
     /**
@@ -187,6 +174,7 @@ class kontakkuc extends Controller
     //manual create
     public function daftar()
     {
-        return view('conten.daftar');
+        $data = modJurusan::all();
+        return view('conten.daftar', compact('data'));
     }
 }

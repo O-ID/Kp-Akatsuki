@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class modTapel extends Model
 {
     protected $table = 'tapel';
+    public $timestamps = false;
 }
