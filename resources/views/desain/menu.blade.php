@@ -70,7 +70,7 @@
           </li>
           <li class="nav-item {{ request()->is('denah') ? 'active' : '' }}">
             <a class="nav-link" href="/denah">
-              <i class="material-icons">person</i>
+              <i class="material-icons">location_ons</i>
               <p>Denah Seskolah</p>
             </a>
           </li>
