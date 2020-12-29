@@ -62,18 +62,18 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item {{ request()->is('/') || request()->is('/daftar') ? 'active' : '' }}">
+          <li class="nav-item {{ request()->is('/') || request()->is('daftar') ? 'active' : '' }}">
             <a class="nav-link" href="/">
               <i class="material-icons">dashboard</i>
               <p>Beranda</p>
             </a>
           </li>
-          {{-- <li class="nav-item {{ request()->is('profile') ? 'active' : '' }}">
-            <a class="nav-link" href="/profile">
+          <li class="nav-item {{ request()->is('denah') ? 'active' : '' }}">
+            <a class="nav-link" href="/denah">
               <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <p>Denah Seskolah</p>
             </a>
-          </li> --}}
+          </li>
           <li class="nav-item {{ request()->is('table') ? 'active' : '' }}">
             <a class="nav-link" href="/table">
               <i class="material-icons">content_paste</i>
