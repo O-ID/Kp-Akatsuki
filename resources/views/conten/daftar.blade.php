@@ -13,7 +13,24 @@
             <div class="card-body">
                 <form class="contak-form" method="post" action="{{ route ('form.formSubmit') }}" autocomplete="false" data-parsley-validate>
                     @csrf
-                    {{-- <div class="form-section">
+                    {{-- tombol pilih jurusan --}}
+                    <div class="form-section">
+                        <div class="d-flex justify-content-center">
+                            <div class="dropdown jr">
+                                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownforjurusan" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih Jurusan</button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownforjurusan">
+                                    @foreach ($data as $datas)
+                                        <a class="dropdown-item" href="#" value='{{ $datas->id_jurusan }}'>{{ $datas->nama_jurusan }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <input class="d-none" type="text" name="forjurusan" value="" id="forjurusan" required>
+                        </div>
+                    </div>
+                    {{-- data siswa --}}
+                    <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">Nama Lengkap</label>
@@ -164,8 +181,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
-                    {{-- <div class="form-section">
+                    </div>
+                    {{-- data sekolah --}}
+                    <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">NISN</label>
@@ -205,8 +223,9 @@
                             </div>
                         </div>
                     </div>
+                    {{-- data pks --}}
                     <div class="form-section">
-                        <div class="dropdown">
+                        <div class="dropdown" id="dropdownpks">
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Menerima PKS?
                             </button>
@@ -263,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- data ortu dan wali --}}
                     <div class="form-section">
                         <div class="row">
                             <div class="col-sm-6">
@@ -335,7 +355,7 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Berkebutuhan Khusus</label>
-                                        <input type="text" class="form-control" name="Kebutuhankhusus" required >
+                                        <input type="text" class="form-control" name="Kebutuhankhususibu" required >
                                     </div>
                                 </div>
                                 <div class="row pt-4">
@@ -433,7 +453,8 @@
                             </div>
                             <div class="col-sm-3"></div>
                         </div>
-                    </div> --}}
+                    </div>
+                    {{-- data tinggi dan berat badan siswa --}}
                     <div class="form-section">
                         <div class="row">
                             <div class="col-sm-3"></div>
@@ -466,6 +487,7 @@
                             <div class="col-sm-3"></div>
                         </div>
                     </div>
+                    {{-- tombol submit form --}}
                     <div class="navnav">
                         <button type="button" class="btn btn-warning pull-right nekt">Selanjutnya</button>
                         <button type="button" class="btn btn-warning pull-left preve">Sebelumnya</button>
@@ -484,7 +506,7 @@
 </div>
 <script>
 $(function(){
-    $('.dropdown .dropdown-menu a').click(function(){
+    $('#dropdownpks .dropdown-menu a').click(function(){
        if ( $(this).text()=='Ya') {
             $('.form-section .kps').addClass('current');
             $('.kps input').attr('required', 'true');
@@ -493,6 +515,7 @@ $(function(){
            $('.kps input').removeAttr('required');
            $('.form-section .kps').removeClass('current');
        }
+    //    console.log('clik di kps');
     });
     $('#pendayah .dropdown-menu a').click(function(){
         $('#pendayah button').text($(this).text()).val($(this).text());
@@ -517,6 +540,11 @@ $(function(){
     $('#penghwali .dropdown-menu a').click(function(){
         $('#penghwali button').text($(this).text()).val($(this).text());
         $('#forpenghwali').text($(this).text()).val($(this).text());
+    });
+    $('.jr .dropdown-menu a').click(function(){
+        $('.jr #dropdownforjurusan').text($(this).text()).val($(this).text());
+        $('.d-flex #forjurusan').val($(this).attr('value')).text($(this).attr('value'));
+        console.log($(this).attr('value'));
     });
 });
 </script>

@@ -1,373 +1,373 @@
 /*==============================================================*/
-/* DBMS name:      Sybase SQL Anywhere 12                       */
-/* Created on:     28/12/2020 15:13:11                          */
+/* dbms name:      sybase sql anywhere 12                       */
+/* created on:     28/12/2020 15:13:11                          */
 /*==============================================================*/
 
-
-if exists(select 1 from sys.sysforeignkey where role='FK_JANGKA_D_RELATIONS_TAPEL') then
-    alter table JANGKA_DAFTAR
-       delete foreign key FK_JANGKA_D_RELATIONS_TAPEL
+if exists(select 1 from sys.sysforeignkey where role='fk_jangka_d_relations_tapel') then
+    alter table jangka_daftar
+       delete foreign key fk_jangka_d_relations_tapel
 end if;
 
-if exists(select 1 from sys.sysforeignkey where role='FK_PENDAFTA_RELATIONS_ORTU') then
-    alter table PENDAFTAR
-       delete foreign key FK_PENDAFTA_RELATIONS_ORTU
+if exists(select 1 from sys.sysforeignkey where role='fk_pendafta_relations_ortu') then
+    alter table pendaftar
+       delete foreign key fk_pendafta_relations_ortu
 end if;
 
-if exists(select 1 from sys.sysforeignkey where role='FK_PENDAFTA_RELATIONS_WALI') then
-    alter table PENDAFTAR
-       delete foreign key FK_PENDAFTA_RELATIONS_WALI
+if exists(select 1 from sys.sysforeignkey where role='fk_pendafta_relations_wali') then
+    alter table pendaftar
+       delete foreign key fk_pendafta_relations_wali
 end if;
 
-if exists(select 1 from sys.sysforeignkey where role='FK_PENDAFTA_RELATIONS_JURUSAN') then
-    alter table PENDAFTAR
-       delete foreign key FK_PENDAFTA_RELATIONS_JURUSAN
+if exists(select 1 from sys.sysforeignkey where role='fk_pendafta_relations_jurusan') then
+    alter table pendaftar
+       delete foreign key fk_pendafta_relations_jurusan
 end if;
 
-if exists(select 1 from sys.sysforeignkey where role='FK_PENDAFTA_RELATIONS_TAPEL') then
-    alter table PENDAFTAR
-       delete foreign key FK_PENDAFTA_RELATIONS_TAPEL
+if exists(select 1 from sys.sysforeignkey where role='fk_pendafta_relations_tapel') then
+    alter table pendaftar
+       delete foreign key fk_pendafta_relations_tapel
 end if;
 
-if exists(select 1 from sys.sysforeignkey where role='FK_REGISTRA_RELATIONS_PENDAFTA') then
-    alter table REGISTRASI
-       delete foreign key FK_REGISTRA_RELATIONS_PENDAFTA
+if exists(select 1 from sys.sysforeignkey where role='fk_registra_relations_pendafta') then
+    alter table registrasi
+       delete foreign key fk_registra_relations_pendafta
 end if;
 
-if exists(select 1 from sys.sysforeignkey where role='FK_STRUKTUR_RELATIONS_TAPEL') then
-    alter table STRUKTUR
-       delete foreign key FK_STRUKTUR_RELATIONS_TAPEL
+if exists(select 1 from sys.sysforeignkey where role='fk_struktur_relations_tapel') then
+    alter table struktur
+       delete foreign key fk_struktur_relations_tapel
 end if;
 
-drop index if exists JANGKA_DAFTAR.RELATIONSHIP_5_FK;
+drop index if exists jangka_daftar.relationship_5_fk;
 
-drop index if exists JANGKA_DAFTAR.JANGKA_DAFTAR_PK;
+drop index if exists jangka_daftar.jangka_daftar_pk;
 
-drop table if exists JANGKA_DAFTAR;
+drop table if exists jangka_daftar;
 
-drop index if exists JURUSAN.JURUSAN_PK;
+drop index if exists jurusan.jurusan_pk;
 
-drop table if exists JURUSAN;
+drop table if exists jurusan;
 
-drop index if exists ORTU.ORTU_PK;
+drop index if exists ortu.ortu_pk;
 
-drop table if exists ORTU;
+drop table if exists ortu;
 
-drop index if exists PENDAFTAR.RELATIONSHIP_7_FK;
+drop index if exists pendaftar.relationship_7_fk;
 
-drop index if exists PENDAFTAR.RELATIONSHIP_6_FK;
+drop index if exists pendaftar.relationship_6_fk;
 
-drop index if exists PENDAFTAR.RELATIONSHIP_4_FK;
+drop index if exists pendaftar.relationship_4_fk;
 
-drop index if exists PENDAFTAR.RELATIONSHIP_3_FK;
+drop index if exists pendaftar.relationship_3_fk;
 
-drop index if exists PENDAFTAR.PENDAFTAR_PK;
+drop index if exists pendaftar.pendaftar_pk;
 
-drop table if exists PENDAFTAR;
+drop table if exists pendaftar;
 
-drop index if exists REGISTRASI.RELATIONSHIP_2_FK;
+drop index if exists registrasi.relationship_2_fk;
 
-drop index if exists REGISTRASI.REGISTRASI_PK;
+drop index if exists registrasi.registrasi_pk;
 
-drop table if exists REGISTRASI;
+drop table if exists registrasi;
 
-drop index if exists STRUKTUR.RELATIONSHIP_8_FK;
+drop index if exists struktur.relationship_8_fk;
 
-drop index if exists STRUKTUR.STRUKTUR_PK;
+drop index if exists struktur.struktur_pk;
 
-drop table if exists STRUKTUR;
+drop table if exists struktur;
 
-drop index if exists TAPEL.TAPEL_PK;
+drop index if exists tapel.tapel_pk;
 
-drop table if exists TAPEL;
+drop table if exists tapel;
 
-drop index if exists WALI.WALI_PK;
+drop index if exists wali.wali_pk;
 
-drop table if exists WALI;
+drop table if exists wali;
 
 /*==============================================================*/
-/* Table: JANGKA_DAFTAR                                         */
+/* table: jangka_daftar                                         */
 /*==============================================================*/
-create table JANGKA_DAFTAR 
+create table jangka_daftar
 (
-   ID_JANGKAR           integer                        not null,
-   ID_TAPEL             integer                        null,
-   MULAI                date                           null,
-   SELESAI              date                           null,
-   constraint PK_JANGKA_DAFTAR primary key (ID_JANGKAR)
+   id_jangkar           integer                        not null auto_increment,
+   id_tapel             integer                        null,
+   mulai                date                           null,
+   selesai              date                           null,
+   constraint pk_jangka_daftar primary key (id_jangkar)
 );
 
 /*==============================================================*/
-/* Index: JANGKA_DAFTAR_PK                                      */
+/* index: jangka_daftar_pk                                      */
 /*==============================================================*/
-create unique index JANGKA_DAFTAR_PK on JANGKA_DAFTAR (
-ID_JANGKAR ASC
+create unique index jangka_daftar_pk on jangka_daftar (
+id_jangkar asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_5_FK                                     */
+/* index: relationship_5_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_5_FK on JANGKA_DAFTAR (
-ID_TAPEL ASC
+create index relationship_5_fk on jangka_daftar (
+id_tapel asc
 );
 
 /*==============================================================*/
-/* Table: JURUSAN                                               */
+/* table: jurusan                                               */
 /*==============================================================*/
-create table JURUSAN 
+create table jurusan
 (
-   ID_JURUSAN           integer                        not null,
-   NAMA_JURUSAN         varchar(100)                   null,
-   constraint PK_JURUSAN primary key (ID_JURUSAN)
+   id_jurusan           integer                        not null auto_increment,
+   nama_jurusan         varchar(100)                   null,
+   constraint pk_jurusan primary key (id_jurusan)
 );
 
 /*==============================================================*/
-/* Index: JURUSAN_PK                                            */
+/* index: jurusan_pk                                            */
 /*==============================================================*/
-create unique index JURUSAN_PK on JURUSAN (
-ID_JURUSAN ASC
+create unique index jurusan_pk on jurusan (
+id_jurusan asc
 );
 
 /*==============================================================*/
-/* Table: ORTU                                                  */
+/* table: ortu                                                  */
 /*==============================================================*/
-create table ORTU 
+create table ortu
 (
-   ID_ORTU              integer                        not null,
-   NAMA_AYAH            varchar(100)                   null,
-   PEKERJAAN_AYAH       varchar(100)                   null,
-   KEBUTUHAN_KHUSUS_AYAH varchar(100)                   null,
-   PENDIDIKAN_AYAH      varchar(100)                   null,
-   PENGHASILAN_AYAH     varchar(100)                   null,
-   NAMA_IBU             varchar(100)                   null,
-   KEBUTUHAN_KHUSUS_IBU varchar(100)                   null,
-   PEKERJAAN_IBU        varchar(100)                   null,
-   PENDIDIKAN_IBU       varchar(100)                   null,
-   PENGHASILAN_IBU      varchar(100)                   null,
-   constraint PK_ORTU primary key (ID_ORTU)
+   id_ortu              integer                        not null auto_increment,
+   nama_ayah            varchar(100)                   null,
+   pekerjaan_ayah       varchar(100)                   null,
+   kebutuhan_khusus_ayah varchar(100)                   null,
+   pendidikan_ayah      varchar(100)                   null,
+   penghasilan_ayah     varchar(100)                   null,
+   nama_ibu             varchar(100)                   null,
+   kebutuhan_khusus_ibu varchar(100)                   null,
+   pekerjaan_ibu        varchar(100)                   null,
+   pendidikan_ibu       varchar(100)                   null,
+   penghasilan_ibu      varchar(100)                   null,
+   constraint pk_ortu primary key (id_ortu)
 );
 
 /*==============================================================*/
-/* Index: ORTU_PK                                               */
+/* index: ortu_pk                                               */
 /*==============================================================*/
-create unique index ORTU_PK on ORTU (
-ID_ORTU ASC
+create unique index ortu_pk on ortu (
+id_ortu asc
 );
 
 /*==============================================================*/
-/* Table: PENDAFTAR                                             */
+/* table: pendaftar                                             */
 /*==============================================================*/
-create table PENDAFTAR 
+create table pendaftar
 (
-   ID_PENDAFTAR         integer                        not null,
-   ID_TAPEL             integer                        null,
-   ID_WALI              integer                        null,
-   ID_ORTU              integer                        null,
-   ID_JURUSAN           integer                        null,
-   NAMA_LENGKAP         varchar(200)                   null,
-   JK                   varchar(1)                     null,
-   NISN                 varchar(20)                    null,
-   NIS                  varchar(20)                    null,
-   NO_SERI_IJAZAH       varchar(20)                    null,
-   NO_SERI_SKHUN        varchar(20)                    null,
-   NO_UN                varchar(20)                    null,
-   NIK                  varchar(20)                    null,
-   NPSN_SEKOLAH_ASAL    varchar(20)                    null,
-   TMPT_LAHIR           varchar(100)                   null,
-   TGL_LAHIR            date                           null,
-   AGAMA                varchar(15)                    null,
-   BERKEBUTUHAN_KHUSUS  varchar(100)                   null,
-   ALAMAT_ASAL          varchar(100)                   null,
-   DUSUN                varchar(100)                   null,
-   RT_RW                varchar(10)                    null,
-   DESA                 varchar(100)                   null,
-   KECAMATAN            varchar(100)                   null,
-   KOTA                 varchar(100)                   null,
-   PROVINSI             varchar(100)                   null,
-   JENIS_TINGGAL        varchar(100)                   null,
-   NO_TELP_RUMAH        varchar(15)                    null,
-   NO_HP                varchar(15)                    null,
-   EMAIL                varchar(100)                   null,
-   NO_KKS               varchar(20)                    null,
-   NO_KPS               varchar(20)                    null,
-   ALASAN_LAYAK         long varchar                   null,
-   NO_KIP               varchar(20)                    null,
-   NAMA_KIP             varchar(100)                   null,
-   ALASAN_TOLAK_KIP     long varchar                   null,
-   NO_REK_AKTA_LAHIR    varchar(20)                    null,
-   LINTANG              varchar(20)                    null,
-   BUJUR                varchar(20)                    null,
-   TINGGI_BADAN         integer                        null,
-   BERAT_BADAN          integer                        null,
-   JARAK_SEKOLAH        varchar(10)                    null,
-   WAKTU_TEMPUH_SEKOLAH time                           null,
-   JUMLAH_SAUDARA       integer                        null,
-   constraint PK_PENDAFTAR primary key (ID_PENDAFTAR)
+   id_pendaftar         integer                        not null auto_increment,
+   id_tapel             integer                        null,
+   id_wali              integer                        null,
+   id_ortu              integer                        null,
+   id_jurusan           integer                        null,
+   nama_lengkap         varchar(200)                   null,
+   jk                   varchar(1)                     null,
+   nisn                 varchar(20)                    null,
+   nis                  varchar(20)                    null,
+   no_seri_ijazah       varchar(20)                    null,
+   no_seri_skhun        varchar(20)                    null,
+   no_un                varchar(20)                    null,
+   nik                  varchar(20)                    null,
+   npsn_sekolah_asal    varchar(20)                    null,
+   tmpt_lahir           varchar(100)                   null,
+   tgl_lahir            date                           null,
+   agama                varchar(15)                    null,
+   berkebutuhan_khusus  varchar(100)                   null,
+   alamat_asal          varchar(100)                   null,
+   dusun                varchar(100)                   null,
+   rt_rw                varchar(10)                    null,
+   desa                 varchar(100)                   null,
+   kecamatan            varchar(100)                   null,
+   kota                 varchar(100)                   null,
+   provinsi             varchar(100)                   null,
+   jenis_tinggal        varchar(100)                   null,
+   no_telp_rumah        varchar(15)                    null,
+   no_hp                varchar(15)                    null,
+   email                varchar(100)                   null,
+   no_kks               varchar(20)                    null,
+   no_kps               varchar(20)                    null,
+   alasan_layak         long varchar                   null,
+   no_kip               varchar(20)                    null,
+   nama_kip             varchar(100)                   null,
+   alasan_tolak_kip     long varchar                   null,
+   no_rek_akta_lahir    varchar(20)                    null,
+   lintang              varchar(20)                    null,
+   bujur                varchar(20)                    null,
+   tinggi_badan         integer                        null,
+   berat_badan          integer                        null,
+   jarak_sekolah        varchar(10)                    null,
+   waktu_tempuh_sekolah time                           null,
+   jumlah_saudara       integer                        null,
+   constraint pk_pendaftar primary key (id_pendaftar)
 );
 
 /*==============================================================*/
-/* Index: PENDAFTAR_PK                                          */
+/* index: pendaftar_pk                                          */
 /*==============================================================*/
-create unique index PENDAFTAR_PK on PENDAFTAR (
-ID_PENDAFTAR ASC
+create unique index pendaftar_pk on pendaftar (
+id_pendaftar asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_3_FK                                     */
+/* index: relationship_3_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_3_FK on PENDAFTAR (
-ID_ORTU ASC
+create index relationship_3_fk on pendaftar (
+id_ortu asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_4_FK                                     */
+/* index: relationship_4_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_4_FK on PENDAFTAR (
-ID_WALI ASC
+create index relationship_4_fk on pendaftar (
+id_wali asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_6_FK                                     */
+/* index: relationship_6_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_6_FK on PENDAFTAR (
-ID_JURUSAN ASC
+create index relationship_6_fk on pendaftar (
+id_jurusan asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_7_FK                                     */
+/* index: relationship_7_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_7_FK on PENDAFTAR (
-ID_TAPEL ASC
+create index relationship_7_fk on pendaftar (
+id_tapel asc
 );
 
 /*==============================================================*/
-/* Table: REGISTRASI                                            */
+/* table: registrasi                                            */
 /*==============================================================*/
-create table REGISTRASI 
+create table registrasi
 (
-   ID_REGISTRASI        integer                        not null,
-   ID_PENDAFTAR         integer                        null,
-   TGL_REGISTRASI       date                           null,
-   STATUS               varchar(1)                     null,
-   constraint PK_REGISTRASI primary key (ID_REGISTRASI)
+   id_registrasi        integer                        not null auto_increment,
+   id_pendaftar         integer                        null,
+   tgl_registrasi       date                           null,
+   status               varchar(1)                     null,
+   constraint pk_registrasi primary key (id_registrasi)
 );
 
 /*==============================================================*/
-/* Index: REGISTRASI_PK                                         */
+/* index: registrasi_pk                                         */
 /*==============================================================*/
-create unique index REGISTRASI_PK on REGISTRASI (
-ID_REGISTRASI ASC
+create unique index registrasi_pk on registrasi (
+id_registrasi asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_2_FK                                     */
+/* index: relationship_2_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_2_FK on REGISTRASI (
-ID_PENDAFTAR ASC
+create index relationship_2_fk on registrasi (
+id_pendaftar asc
 );
 
 /*==============================================================*/
-/* Table: STRUKTUR                                              */
+/* table: struktur                                              */
 /*==============================================================*/
-create table STRUKTUR 
+create table struktur
 (
-   ID_STRUKTUR          integer                        not null,
-   ID_TAPEL             integer                        null,
-   NAMA_JABATAN         varchar(100)                   null,
-   NAMA_PENJABAT        varchar(100)                   null,
-   constraint PK_STRUKTUR primary key (ID_STRUKTUR)
+   id_struktur          integer                        not null auto_increment,
+   id_tapel             integer                        null,
+   nama_jabatan         varchar(100)                   null,
+   nama_penjabat        varchar(100)                   null,
+   constraint pk_struktur primary key (id_struktur)
 );
 
 /*==============================================================*/
-/* Index: STRUKTUR_PK                                           */
+/* index: struktur_pk                                           */
 /*==============================================================*/
-create unique index STRUKTUR_PK on STRUKTUR (
-ID_STRUKTUR ASC
+create unique index struktur_pk on struktur (
+id_struktur asc
 );
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_8_FK                                     */
+/* index: relationship_8_fk                                     */
 /*==============================================================*/
-create index RELATIONSHIP_8_FK on STRUKTUR (
-ID_TAPEL ASC
+create index relationship_8_fk on struktur (
+id_tapel asc
 );
 
 /*==============================================================*/
-/* Table: TAPEL                                                 */
+/* table: tapel                                                 */
 /*==============================================================*/
-create table TAPEL 
+create table tapel
 (
-   ID_TAPEL             integer                        not null,
-   TAPEL                varchar(100)                   null,
-   STATUS               varchar(1)                     null,
-   constraint PK_TAPEL primary key (ID_TAPEL)
+   id_tapel             integer                        not null auto_increment,
+   tapel                varchar(100)                   null,
+   status               varchar(1)                     null,
+   constraint pk_tapel primary key (id_tapel)
 );
 
 /*==============================================================*/
-/* Index: TAPEL_PK                                              */
+/* index: tapel_pk                                              */
 /*==============================================================*/
-create unique index TAPEL_PK on TAPEL (
-ID_TAPEL ASC
+create unique index tapel_pk on tapel (
+id_tapel asc
 );
 
 /*==============================================================*/
-/* Table: WALI                                                  */
+/* table: wali                                                  */
 /*==============================================================*/
-create table WALI 
+create table wali
 (
-   ID_WALI              integer                        not null,
-   PEKERJAAN_WALI       varchar(100)                   null,
-   PENDIDIKAN_WALI      varchar(100)                   null,
-   PENGHASILAN_WALI     varchar(100)                   null,
-   constraint PK_WALI primary key (ID_WALI)
+   id_wali              integer                        not null auto_increment,
+   pekerjaan_wali       varchar(100)                   null,
+   pendidikan_wali      varchar(100)                   null,
+   penghasilan_wali     varchar(100)                   null,
+   constraint pk_wali primary key (id_wali)
 );
 
 /*==============================================================*/
-/* Index: WALI_PK                                               */
+/* index: wali_pk                                               */
 /*==============================================================*/
-create unique index WALI_PK on WALI (
-ID_WALI ASC
+create unique index wali_pk on wali (
+id_wali asc
 );
 
-alter table JANGKA_DAFTAR
-   add constraint FK_JANGKA_D_RELATIONS_TAPEL foreign key (ID_TAPEL)
-      references TAPEL (ID_TAPEL)
+alter table jangka_daftar
+   add constraint fk_jangka_d_relations_tapel foreign key (id_tapel)
+      references tapel (id_tapel)
       on update restrict
       on delete restrict;
 
-alter table PENDAFTAR
-   add constraint FK_PENDAFTA_RELATIONS_ORTU foreign key (ID_ORTU)
-      references ORTU (ID_ORTU)
+alter table pendaftar
+   add constraint fk_pendafta_relations_ortu foreign key (id_ortu)
+      references ortu (id_ortu)
       on update restrict
       on delete restrict;
 
-alter table PENDAFTAR
-   add constraint FK_PENDAFTA_RELATIONS_WALI foreign key (ID_WALI)
-      references WALI (ID_WALI)
+alter table pendaftar
+   add constraint fk_pendafta_relations_wali foreign key (id_wali)
+      references wali (id_wali)
       on update restrict
       on delete restrict;
 
-alter table PENDAFTAR
-   add constraint FK_PENDAFTA_RELATIONS_JURUSAN foreign key (ID_JURUSAN)
-      references JURUSAN (ID_JURUSAN)
+alter table pendaftar
+   add constraint fk_pendafta_relations_jurusan foreign key (id_jurusan)
+      references jurusan (id_jurusan)
       on update restrict
       on delete restrict;
 
-alter table PENDAFTAR
-   add constraint FK_PENDAFTA_RELATIONS_TAPEL foreign key (ID_TAPEL)
-      references TAPEL (ID_TAPEL)
+alter table pendaftar
+   add constraint fk_pendafta_relations_tapel foreign key (id_tapel)
+      references tapel (id_tapel)
       on update restrict
       on delete restrict;
 
-alter table REGISTRASI
-   add constraint FK_REGISTRA_RELATIONS_PENDAFTA foreign key (ID_PENDAFTAR)
-      references PENDAFTAR (ID_PENDAFTAR)
+alter table registrasi
+   add constraint fk_registra_relations_pendafta foreign key (id_pendaftar)
+      references pendaftar (id_pendaftar)
       on update restrict
       on delete restrict;
 
-alter table STRUKTUR
-   add constraint FK_STRUKTUR_RELATIONS_TAPEL foreign key (ID_TAPEL)
-      references TAPEL (ID_TAPEL)
+alter table struktur
+   add constraint fk_struktur_relations_tapel foreign key (id_tapel)
+      references tapel (id_tapel)
       on update restrict
       on delete restrict;
+
 

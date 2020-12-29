@@ -17,14 +17,16 @@
                             <h5 class="card-title">Untuk Melakukan Pendaftaran Klik Tombol Pendaftaran Dibawah</h5>
                             <a href="{{url('/daftar')}}" class="btn btn-warning pull-center">Daftar Sekarang</a>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
             <div class="card-footer">
                 <div class="container">
                     <div class="row">
                         <div class="col text-right">
-                            <h6 class="text-danger">*Pendaftaran Dimulai Tanggal 29 November 2020 s/d 10 Desember 2020</h6>
+                            @foreach ($data as $datas)
+                                <h6 class="text-danger">*Pendaftaran Dimulai Tanggal {{ $datas->mulai }} Sampai Tanggal {{ $datas->selesai }}</h6>
+                            @endforeach
                         </div>
                       </div>
                 </div>
