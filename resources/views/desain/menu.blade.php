@@ -62,31 +62,42 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item {{ request()->is('/') || request()->is('/daftar') ? 'active' : '' }}">
+          <li class="nav-item {{ request()->is('/') || request()->is('daftar') ? 'active' : '' }}">
             <a class="nav-link" href="/">
               <i class="material-icons">dashboard</i>
               <p>Beranda</p>
             </a>
           </li>
-          {{-- <li class="nav-item {{ request()->is('profile') ? 'active' : '' }}">
-            <a class="nav-link" href="/profile">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
+
+          <li class="nav-item {{ request()->is('typo') ? 'active' : '' }}" data-toggle="collapse" href="#pagesExamples">
+            <a class="nav-link" href="JavaScript:void(0);">
+              <i class="material-icons">account_balance</i>
+              <p>Sekolah<b class="caret"></b></p>
             </a>
-          </li> --}}
+            <div class="collapse" id="pagesExamples">
+                <ul class="nav">
+                    <li class="nav-item {{ request()->is('denah') ? 'active' : '' }}">
+                        <a class="nav-link" href="/denah">
+                          <i class="material-icons">location_ons</i>
+                          <p>Denah Seskolah</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ request()->is('struktur') ? 'active' : '' }}">
+                        <a class="nav-link" href="/struktur">
+                          <i class="material-icons">library_books</i>
+                          <p>Struktur Sekolah</p>
+                        </a>
+                    </li>
+                </ul>
+              </div>
+          </li>
           <li class="nav-item {{ request()->is('table') ? 'active' : '' }}">
             <a class="nav-link" href="/table">
               <i class="material-icons">content_paste</i>
               <p>Daftar Kelulusan</p>
             </a>
           </li>
-          {{-- <li class="nav-item {{ request()->is('typo') ? 'active' : '' }}">
-            <a class="nav-link" href="/typo">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="nav-item {{ request()->is('icon') ? 'active' : '' }}">
+          {{-- <li class="nav-item {{ request()->is('icon') ? 'active' : '' }}">
             <a class="nav-link" href="/icon">
               <i class="material-icons">bubble_chart</i>
               <p>Icons</p>
