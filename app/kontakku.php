@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class kontakku extends Model
 {
-    protected $table = 'model_kontaks';
+    protected $table = 'admin';
 }

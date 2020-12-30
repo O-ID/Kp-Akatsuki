@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card">
         <div class="card-header card-header-primary">
-            <h4 class="card-title ">Simple Table</h4>
+            <h4 class="card-title ">Daftar Kelulusan Penerimaan Siswa Baru</h4>
             <p class="card-category"> Here is a subtitle for this table</p>
         </div>
         <div class="card-body">
@@ -13,20 +13,20 @@
             <table class="table">
                 <thead class=" text-primary">
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Country</th>
-                    <th>City</th>
-                    <th>Salary</th>
+                    <th>Nama Pendaftar</th>
+                    <th>Jurusan</th>
+                    <th>Tanggal Registrasi</th>
+                    <th>Status</th>
                 </thead>
                 <tbody>
                     @php $no=1; @endphp
                     @foreach($data as $datas)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $datas->nama_kontak }}</td>
-                        <td>{{ $datas->email_kontak }}</td>
-                        <td>{{ $datas->nohp_kontak }}</td>
-                        <td class="text-primary">{{ $datas->alamat_kontak }}</td>
+                        <td>{{ $datas->nama_lengkap }}</td>
+                        <td>{{ $datas->nama_jurusan }}</td>
+                        <td>{{ $datas->tgl_registrasi }}</td>
+                        <td class="text-warning">{{ $datas->status==0?'Menunggu Konfirmasi':'Lulus' }}</td>
                     </tr>
                     @endforeach
                 </tbody>

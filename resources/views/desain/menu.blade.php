@@ -40,6 +40,9 @@
     input[type=number] {
         -moz-appearance:textfield; /* Firefox */
     }
+    .d-full {
+        display: inline;
+    }
     </style>
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <!-- https://www.creative-tim.com/product/material-dashboard-dark -->
@@ -52,76 +55,15 @@
 <body class="dark-edition">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="/assets/img/sidebar-2.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
       <div class="logo"><a href="/" class="simple-text logo-normal">
-          SMK Matsaratul Huda
+        SMKS ISLAM TANJUNG
         </a></div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item {{ request()->is('/') || request()->is('daftar') ? 'active' : '' }}">
-            <a class="nav-link" href="/">
-              <i class="material-icons">dashboard</i>
-              <p>Beranda</p>
-            </a>
-          </li>
-
-          <li class="nav-item {{ request()->is('typo') ? 'active' : '' }}" data-toggle="collapse" href="#pagesExamples">
-            <a class="nav-link" href="JavaScript:void(0);">
-              <i class="material-icons">account_balance</i>
-              <p>Sekolah<b class="caret"></b></p>
-            </a>
-            <div class="collapse" id="pagesExamples">
-                <ul class="nav">
-                    <li class="nav-item {{ request()->is('denah') ? 'active' : '' }}">
-                        <a class="nav-link" href="/denah">
-                          <i class="material-icons">location_ons</i>
-                          <p>Denah Seskolah</p>
-                        </a>
-                    </li>
-                    <li class="nav-item {{ request()->is('struktur') ? 'active' : '' }}">
-                        <a class="nav-link" href="/struktur">
-                          <i class="material-icons">library_books</i>
-                          <p>Struktur Sekolah</p>
-                        </a>
-                    </li>
-                </ul>
-              </div>
-          </li>
-          <li class="nav-item {{ request()->is('table') ? 'active' : '' }}">
-            <a class="nav-link" href="/table">
-              <i class="material-icons">content_paste</i>
-              <p>Daftar Kelulusan</p>
-            </a>
-          </li>
-          {{-- <li class="nav-item {{ request()->is('icon') ? 'active' : '' }}">
-            <a class="nav-link" href="/icon">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item {{ request()->is('map') ? 'active' : '' }}">
-            <a class="nav-link" href="/map">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item {{ request()->is('notif') ? 'active' : '' }}">
-            <a class="nav-link" href="/notif">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li> --}}
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
-        </ul>
+        @if (Session::has('LoginAdmin'))
+            @include('desain.menuadmin')
+        @else
+            @include('desain.menuuser')
+        @endif
       </div>
     </div>
     <div class="main-panel">
@@ -148,21 +90,40 @@
                     </p>
                   </a>
 
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <div class="container">
-                      <form class="my-3" method="post" action="{{ url ('/') }}" autocomplete="false">
-                        {{csrf_field()}}
-                            <div class="form-group @error('username') has-danger @enderror">
-                                <label class="bmd-label-floating">Username</label>
-                                <input type="text" class="form-control text-dark" name="username">
+                        @if (Session::has('LoginAdmin'))
+                        <div class="d-flex justify-content-center pt-2">
+                            {{-- <i class="material-icons lg-icon">person</i> --}}
+                            <img src="/assets/img/adminlogo.png" width="50px" alt="" srcset="">
+                        </div>
+                        <div class="d-flex justify-content-center pt-2 pb-2">
+                            <a class="btn btn-primary btn-sm" href="{{ url ('/register') }}"><i class="material-icons">person_add</i></a>
+                            <a class="btn btn-danger btn-sm" href="{{ url ('/logout') }}"><i class="material-icons">power_settings_new</i></a>
+                        </div>
+                        @else
+                        <h4 class="text-center pt-2">Login Admin</h4>
+                        <form class="pt-2 pb-2" method="post" action="{{ url ('/LoginAdmin') }}" autocomplete="false" style="width: 200px">
+                            {{csrf_field()}}
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group @error('email') has-danger @enderror">
+                                    <label class="bmd-label-floating">Email</label>
+                                    <input type="email" class="form-control text-dark" name="email">
+                                </div>
                             </div>
-                            <div class="form-group @error('password') has-danger @enderror">
-                                <label class="bmd-label-floating">Password</label>
-                                <input type="password" class="form-control text-dark" name="password">
+                            <div class="d-flex justify-content-center pt-2">
+                                <div class="form-group @error('password') has-danger @enderror">
+                                    <label class="bmd-label-floating">Password</label>
+                                    <input type="password" class="form-control text-dark" name="password">
+                                </div>
                             </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Login</button>
-                        <div class="clearfix"></div>
-                    </form>
+                            <div class="d-flex justify-content-center pt-2">
+                                <button type="submit" class="btn btn-warning btn-sm">Masuk</button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                        {{-- <img src="/assets/img/testdoan.png" style="width: 200px;"> --}}
+                        @endif
                     </div>
                 </div>
               </li>
@@ -194,9 +155,6 @@
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!--  Google Maps Plugin    -->
-  <!-- {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}} -->
-  <!-- Chartist JS -->
   <script src="/assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

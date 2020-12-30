@@ -11,7 +11,11 @@ use App\modRegistrasi;
 use App\modTapel;
 use App\modWali;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
+use function GuzzleHttp\Promise\all;
+
 class kontakkuc extends Controller
 {
     /**
@@ -118,13 +122,22 @@ class kontakkuc extends Controller
         $data->jarak_sekolah=$request->jarakrumahsiswa;
         $data->waktu_tempuh_sekolah=$request->wtks;
         $data->jumlah_saudara=$request->sodara;
+        $data->save();
+        $idsiswa=$data->id;
 
-        if($data->save()){
-            return redirect('/') -> with('status', 'Selamat '.$request->nama.' Dengan ID '.$data->id.' Pendaftaranmu Telah Kami Terima, Mohon Tunggu Pengumuman Selanjutnya.');
+        //tabel registrasi
+        $tgldaptar=date('Y-m-d');
+        $daptar=new modRegistrasi();
+        $daptar->id_pendaftar=$idsiswa;
+        $daptar->tgl_registrasi=$tgldaptar;
+        $daptar->status=0;
+        if($daptar->save()){
+            return redirect('/') -> with('status', 'Selamat '.$request->nama.' Dengan ID '.$daptar->id.' Pendaftaranmu Telah Kami Terima, Mohon Tunggu Pengumuman Selanjutnya.');
         }else{
             return redirect()->back();
         }
         // return $request->all();
+
     }
 
     /**
@@ -133,9 +146,13 @@ class kontakkuc extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data = modRegistrasi::select('registrasi.id_registrasi', 'registrasi.status','pendaftar.id_jurusan', 'registrasi.tgl_registrasi', 'pendaftar.nama_lengkap','jurusan.nama_jurusan')
+                ->join('pendaftar', 'pendaftar.id_pendaftar', '=', 'registrasi.id_pendaftar')
+                ->join('jurusan', 'jurusan.id_jurusan','=', 'pendaftar.id_jurusan')
+                ->get();
+        return view('page.table', ['data' => $data]);
     }
 
     /**
@@ -176,5 +193,56 @@ class kontakkuc extends Controller
     {
         $data = modJurusan::all();
         return view('conten.daftar', compact('data'));
+    }
+    public function registerPost(Request $request){
+        if(Session::has('LoginAdmin'))
+        {
+            // return $request->session()->all();
+            $this->validate($request, [
+                'name' => 'required|min:4',
+                'email' => 'required|min:4|email|unique:admin',
+                'password' => 'required',
+                'confirmation' => 'required|same:password',
+            ]);
+
+            $datass =  new kontakku();
+            $datass->nama_admin = $request->name;
+            $datass->email = $request->email;
+            $datass->password = bcrypt($request->password);
+            $datass->save();
+            // return date('Y-m-d');
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+    public function LoginAdmin(Request $request){
+        if ( !empty( $request->email ) && !empty( $request->password ) ) {
+            $email = $request->email;
+            $password = $request->password;
+
+            $data = kontakku::where('email',$email)->first();
+            if($data){ //apakah email tersebut ada atau tidak
+                if(Hash::check($password,$data->password)){
+                    Session::put('name',$data->nama_admin);
+                    Session::put('email',$data->email);
+                    Session::put('LoginAdmin',TRUE);
+                    return redirect('/')->with('status','Selamat Datang '.$data->nama_admin);
+                }
+                else{
+                    return redirect('/')->with('status','Password Anda Salah Salah !');
+                }
+            }
+            else{
+                return redirect('/')->with('status','Email Anda Salah!');
+            }
+        }else{
+            return redirect('/')->with('status','Mohon Isikan Email dan Password Terlebih Dahulu');
+        }
+    }
+    public function logout(){
+        Session::flush();
+        return redirect('/')->with('status','Anda Sudah Keluar Sebagai Admin');
     }
 }

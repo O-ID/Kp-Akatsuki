@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     {{-- data siswa --}}
-                    <div class="form-section">
+                    {{-- <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">Nama Lengkap</label>
@@ -181,9 +181,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- data sekolah --}}
-                    <div class="form-section">
+                    {{-- <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">NISN</label>
@@ -222,9 +222,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- data pks --}}
-                    <div class="form-section">
+                    {{-- <div class="form-section">
                         <div class="dropdown" id="dropdownpks">
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Menerima PKS?
@@ -281,7 +281,7 @@
                                 <div class="col-sm-3"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- data ortu dan wali --}}
                     <div class="form-section">
                         <div class="row">

@@ -13,13 +13,12 @@ class CreateKontakkusTable extends Migration
      */
     public function up()
     {
-        Schema::create('kontakku', function (Blueprint $table) {
-            $table->increments('id_kontak');
-            $table->string('nama_kontak');
-            $table->string('email_kontak');
-            $table->string('nohp_kontak');
-            $table->string('alamat_kontak');
-
+        Schema::create('admin', function (Blueprint $table) {
+            $table->increments('id_admin');
+            $table->string('nama_admin');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateKontakkusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kontakku');
+        Schema::dropIfExists('admin');
     }
 }
