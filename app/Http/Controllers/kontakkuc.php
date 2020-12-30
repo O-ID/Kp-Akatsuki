@@ -211,6 +211,7 @@ class kontakkuc extends Controller
             $datass->password = bcrypt($request->password);
             $datass->save();
             // return date('Y-m-d');
+            return redirect()->back();
         }
         else
         {

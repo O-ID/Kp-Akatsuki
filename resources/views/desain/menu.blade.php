@@ -95,7 +95,10 @@
                         @if (Session::has('LoginAdmin'))
                         <div class="d-flex justify-content-center pt-2">
                             {{-- <i class="material-icons lg-icon">person</i> --}}
-                            <img src="/assets/img/adminlogo.png" width="50px" alt="" srcset="">
+                            <img src="/assets/img/adminlogo.png" width="50px" alt="" srcset=""><br>
+                        </div>
+                        <div class="d-flex justify-content-center pt-2">
+                            <h6>{{Session::get('name')}}</h6>
                         </div>
                         <div class="d-flex justify-content-center pt-2 pb-2">
                             <a class="btn btn-primary btn-sm" href="{{ url ('/register') }}"><i class="material-icons">person_add</i></a>

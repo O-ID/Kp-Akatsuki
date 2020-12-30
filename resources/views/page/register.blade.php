@@ -34,6 +34,7 @@
         <button type="reset" class="btn btn-md btn-danger">Cancel</button>
     </div>
 </form>
+<a href="/">..Beranda</a>
 @else
 <script>
     alert('Pastikan Anda Login Sebagai Admin Di halaman utama');
