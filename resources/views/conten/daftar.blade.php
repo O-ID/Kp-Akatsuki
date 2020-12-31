@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     {{-- data siswa --}}
-                    {{-- <div class="form-section">
+                    <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">Nama Lengkap</label>
@@ -181,9 +181,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     {{-- data sekolah --}}
-                    {{-- <div class="form-section">
+                    <div class="form-section">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">NISN</label>
@@ -222,9 +222,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     {{-- data pks --}}
-                    {{-- <div class="form-section">
+                    <div class="form-section">
                         <div class="dropdown" id="dropdownpks">
                             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Menerima PKS?
@@ -281,7 +281,7 @@
                                 <div class="col-sm-3"></div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     {{-- data ortu dan wali --}}
                     <div class="form-section">
                         <div class="row">
@@ -504,49 +504,5 @@
         </div>
     </div>
 </div>
-<script>
-$(function(){
-    $('#dropdownpks .dropdown-menu a').click(function(){
-       if ( $(this).text()=='Ya') {
-            $('.form-section .kps').addClass('current');
-            $('.kps input').attr('required', 'true');
-            // console.log($(this).text());
-       }else{
-           $('.kps input').removeAttr('required');
-           $('.form-section .kps').removeClass('current');
-       }
-    //    console.log('clik di kps');
-    });
-    $('#pendayah .dropdown-menu a').click(function(){
-        $('#pendayah button').text($(this).text()).val($(this).text());
-        $('#forpendayah').text($(this).text()).val($(this).text());
-    });
-    $('#penghayah .dropdown-menu a').click(function(){
-        $('#penghayah button').text($(this).text()).val($(this).text());
-        $('#forpenghayah').text($(this).text()).val($(this).text());
-    });
-    $('#pendibu .dropdown-menu a').click(function(){
-        $('#pendibu button').text($(this).text()).val($(this).text());
-        $('#forpendibu').text($(this).text()).val($(this).text());
-    });
-    $('#penghibu .dropdown-menu a').click(function(){
-        $('#penghibu button').text($(this).text()).val($(this).text());
-        $('#forpenghibu').text($(this).text()).val($(this).text());
-    });
-    $('#pendwali .dropdown-menu a').click(function(){
-        $('#pendwali button').text($(this).text()).val($(this).text());
-        $('#forpendwali').text($(this).text()).val($(this).text());
-    });
-    $('#penghwali .dropdown-menu a').click(function(){
-        $('#penghwali button').text($(this).text()).val($(this).text());
-        $('#forpenghwali').text($(this).text()).val($(this).text());
-    });
-    $('.jr .dropdown-menu a').click(function(){
-        $('.jr #dropdownforjurusan').text($(this).text()).val($(this).text());
-        $('.d-flex #forjurusan').val($(this).attr('value')).text($(this).attr('value'));
-        console.log($(this).attr('value'));
-    });
-});
-</script>
 </section>
 @endsection
