@@ -28,6 +28,7 @@ class ComposerStaticInit125d3704f5eee5e7b67dd4f16afc8020
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -43,6 +44,7 @@ class ComposerStaticInit125d3704f5eee5e7b67dd4f16afc8020
         'Y' => 
         array (
             'Ycs77\\LaravelWizard\\' => 20,
+            'Yajra\\DataTables\\' => 17,
         ),
         'X' => 
         array (
@@ -182,6 +184,10 @@ class ComposerStaticInit125d3704f5eee5e7b67dd4f16afc8020
         'Ycs77\\LaravelWizard\\' => 
         array (
             0 => __DIR__ . '/..' . '/ycs77/laravel-wizard/src',
+        ),
+        'Yajra\\DataTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -466,6 +472,7 @@ class ComposerStaticInit125d3704f5eee5e7b67dd4f16afc8020
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\adminzone' => __DIR__ . '/../..' . '/app/Http/Controllers/adminzone.php',
         'App\\Http\\Controllers\\kontakkuc' => __DIR__ . '/../..' . '/app/Http/Controllers/kontakkuc.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -482,6 +489,13 @@ class ComposerStaticInit125d3704f5eee5e7b67dd4f16afc8020
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\kontakku' => __DIR__ . '/../..' . '/app/kontakku.php',
+        'App\\modJangka' => __DIR__ . '/../..' . '/app/modJangka.php',
+        'App\\modJurusan' => __DIR__ . '/../..' . '/app/modJurusan.php',
+        'App\\modOrtu' => __DIR__ . '/../..' . '/app/modOrtu.php',
+        'App\\modPendaftar' => __DIR__ . '/../..' . '/app/modPendaftar.php',
+        'App\\modRegistrasi' => __DIR__ . '/../..' . '/app/modRegistrasi.php',
+        'App\\modTapel' => __DIR__ . '/../..' . '/app/modTapel.php',
+        'App\\modWali' => __DIR__ . '/../..' . '/app/modWali.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
@@ -4606,6 +4620,22 @@ class ComposerStaticInit125d3704f5eee5e7b67dd4f16afc8020
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
+        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
+        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
+        'Yajra\\DataTables\\Contracts\\Formatter' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/Formatter.php',
+        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
+        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
+        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
+        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
+        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
+        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
+        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
+        'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
+        'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
+        'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
         'Ycs77\\LaravelWizard\\CacheManager' => __DIR__ . '/..' . '/ycs77/laravel-wizard/src/CacheManager.php',
         'Ycs77\\LaravelWizard\\Console\\StepMakeCommand' => __DIR__ . '/..' . '/ycs77/laravel-wizard/src/Console/StepMakeCommand.php',
         'Ycs77\\LaravelWizard\\Console\\TableCommand' => __DIR__ . '/..' . '/ycs77/laravel-wizard/src/Console/TableCommand.php',

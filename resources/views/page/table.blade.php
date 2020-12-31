@@ -13,6 +13,7 @@
             <table class="table">
                 <thead class=" text-primary">
                     <th>No</th>
+                    <th>ID Pendaftaran</th>
                     <th>Nama Pendaftar</th>
                     <th>Jurusan</th>
                     <th>Tanggal Registrasi</th>
@@ -23,6 +24,7 @@
                     @foreach($data as $datas)
                     <tr>
                         <td>{{ $no++ }}</td>
+                        <td>{{ $datas->id_registrasi }}</td>
                         <td>{{ $datas->nama_lengkap }}</td>
                         <td>{{ $datas->nama_jurusan }}</td>
                         <td>{{ $datas->tgl_registrasi }}</td>

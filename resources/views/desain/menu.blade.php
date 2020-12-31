@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/assets/datepick/css/bootstrap-datepicker3.min.css">
   <link rel="stylesheet" href="/assets/css/perfect-scrollbar.min.css">
   <link href="/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 
   <style>
     .form-section{
@@ -44,12 +45,10 @@
         display: inline;
     }
     </style>
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <!-- https://www.creative-tim.com/product/material-dashboard-dark -->
-<!-- <link href="/assets/demo/demo.css" rel="stylesheet" /> -->
-  <script src="/assets/js/core/jquery.min.js"></script>
-  <script src="/assets/datepick/js/bootstrap-datepicker.min.js"></script>
-  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="/assets/js/core/jquery.min.js"></script>
+    <script src="/assets/datepick/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/js/plugins/bootstrap-notify.js"></script>
+
 </head>
 
 <body class="dark-edition">
@@ -101,8 +100,8 @@
                             <h6>{{Session::get('name')}}</h6>
                         </div>
                         <div class="d-flex justify-content-center pt-2 pb-2">
-                            <a class="btn btn-primary btn-sm" href="{{ url ('/register') }}"><i class="material-icons">person_add</i></a>
-                            <a class="btn btn-danger btn-sm" href="{{ url ('/logout') }}"><i class="material-icons">power_settings_new</i></a>
+                            <a class="btn btn-primary btn-sm" href="{{ url ('/register') }}" data-toggle="tooltip" data-placement="bottom" title="Tambah Admin Pendaftaran"><i class="material-icons">person_add</i></a>
+                            <a class="btn btn-danger btn-sm" href="{{ url ('/logout') }}" data-toggle="tooltip" data-placement="bottom" title="Keluar"><i class="material-icons">power_settings_new</i></a>
                         </div>
                         @else
                         <h4 class="text-center pt-2">Login Admin</h4>
@@ -149,7 +148,7 @@
   </div>
 
   <!--   Core JS Files   -->
-
+  <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
   <script src="/assets/js/core/popper.min.js"></script>
   <script src="/assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="/assets/js/index.umd.js"></script>

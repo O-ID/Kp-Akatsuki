@@ -25,13 +25,13 @@ Route::get('/struktur', function () {
 Route::resource('/', 'kontakkuc');
 Route::get('/kelulusan', 'kontakkuc@show');
 Route::get('/daftar', 'kontakkuc@daftar');
-Route::post('/table/store','kontakkuc@store')->name('form.formSubmit');
-Route::post('/table/destroy/{id}', 'kontakkuc@destroy');
-Route::get('/table/edit/{id}', 'kontakkuc@edit');
-Route::post('/table/update', 'kontakkuc@update');
+Route::post('/daftar/store','kontakkuc@store')->name('form.formSubmit');
+//adminzone
 Route::get('/register', function () {
     return view('page.register');
 });
-Route::post('/registerPost', 'kontakkuc@registerPost');
-Route::post('/LoginAdmin', 'kontakkuc@LoginAdmin');
-Route::get('/logout', 'kontakkuc@logout');
+Route::post('/registerPost', 'adminzone@registerPost');
+Route::post('/LoginAdmin', 'adminzone@LoginAdmin');
+Route::get('/logout', 'adminzone@logout');
+Route::get('/validasi', 'adminzone@getBasic');
+Route::get('/basic', 'adminzone@getBasicdata')->name('get.basicdata');
