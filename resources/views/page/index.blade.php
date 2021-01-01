@@ -13,7 +13,7 @@
                         @endif
                     </h2>
                     <h4 class="mt-0">SMK Matsaratul Huda</h4>
-                    <img src="/assets/img/new_logo.png" alt="" width="150px">
+                    <img src="/assets/img/favicon.png" alt="" width="150px">
                 </div>
             </div>
             <div class="card-body">
@@ -47,10 +47,10 @@
 <script>
     $(document).ready(function(){
         @if(session('status'))
-            md.showNotification("top","left","warning","{{ session('status') }}");
+            md.showNotification("top","left","primary","{{ session('status') }}");
         @endif
         @if(session('errorr'))
-            md.showNotification("top","left","danger","{{ session('status') }}");
+            md.showNotification("top","left","danger","{{ session('errorr') }}");
         @endif
     });
 </script>

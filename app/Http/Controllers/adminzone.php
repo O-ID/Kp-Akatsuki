@@ -139,14 +139,14 @@ class adminzone extends Controller
                     return redirect('/')->with('status','Selamat Datang '.$data->nama_admin);
                 }
                 else{
-                    return redirect('/')->with('status','Password Anda Salah Salah !');
+                    return redirect('/')->with('errorr','Password Anda Salah Salah !');
                 }
             }
             else{
-                return redirect('/')->with('status','Email Anda Salah!');
+                return redirect('/')->with('errorr','Email Anda Salah!');
             }
         }else{
-            return redirect('/')->with('status','Mohon Isikan Email dan Password Terlebih Dahulu');
+            return redirect('/')->with('errorr','Mohon Isikan Email dan Password Terlebih Dahulu');
         }
     }
     public function logout(){
@@ -164,6 +164,13 @@ class adminzone extends Controller
     }
     public function getBasic()
     {
-        return view('page.admin.validasi');
+        if(Session::has('LoginAdmin'))
+        {
+            return view('page.admin.validasi');
+        }
+        else
+        {
+            return redirect()->back();
+        }
     }
 }

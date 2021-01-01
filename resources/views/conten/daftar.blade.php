@@ -11,6 +11,9 @@
                 </div>
             </div>
             <div class="card-body">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
                 <form class="contak-form" method="post" action="{{ route ('form.formSubmit') }}" autocomplete="false" data-parsley-validate>
                     @csrf
                     {{-- tombol pilih jurusan --}}
@@ -98,7 +101,7 @@
                             <div class="col-sm-2">
                                 <label class="bmd-label-floating">Jenis Kelamin</label>
                                 <div class="dropdown">
-                                    <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="Jksiswa" value="" id="dropdownMenuButtonjk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
+                                    <button class="btn btn-warning btn-sm btn-block dropdown-toggle" type="button" name="Jksiswa" value="" id="dropdownMenuButtonjk" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
                                         Pilih Jenis Kelamin
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonjk">
@@ -112,7 +115,7 @@
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Agama</label>
                                         <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="agama" value="" id="dropdownMenuButtonag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
+                                            <button class="btn btn-warning btn-sm btn-block dropdown-toggle" type="button" name="agama" value="" id="dropdownMenuButtonag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
                                                 Pilih Agama
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonag">
@@ -131,7 +134,7 @@
                                         <label class="bmd-label-floating">Transportasi/Kendaraan</label>
                                         <input class="form-control d-none" type="text" name="forkendaraan" id="forkendaraan" required>
                                         <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm btn-block dropdown-toggle" type="button" name="agama" value="" id="dropdownMenuButtonkd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
+                                            <button class="btn btn-warning btn-sm btn-block dropdown-toggle" type="button" name="agama" value="" id="dropdownMenuButtonkd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required>
                                                 Pilih Pilihan
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonkd">
