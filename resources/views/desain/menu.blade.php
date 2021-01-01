@@ -15,8 +15,7 @@
   <link href="/assets/css/transition.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/datepick/css/bootstrap-datepicker3.min.css">
   <link rel="stylesheet" href="/assets/css/perfect-scrollbar.min.css">
-  <link href="/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="/assets/css/material-dashboard-pro.min.css?v=2.2.2">
 
   <style>
     .form-section{
@@ -51,7 +50,7 @@
 
 </head>
 
-<body class="dark-edition">
+<body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="/assets/img/sidebar-2.jpg">
       <div class="logo"><a href="/" class="simple-text logo-normal">
@@ -148,7 +147,9 @@
   </div>
 
   <!--   Core JS Files   -->
-  <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="https://demos.creative-tim.com/material-dashboard-pro/assets/js/plugins/jquery.dataTables.min.js"></script> -->
+  
+  <script src="/assets/js/jquery.dataTables.min.js"></script>
   <script src="/assets/js/core/popper.min.js"></script>
   <script src="/assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="/assets/js/index.umd.js"></script>
