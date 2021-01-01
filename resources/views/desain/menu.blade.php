@@ -16,9 +16,8 @@
     <link href="/assets/css/transition.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/datepick/css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" href="/assets/css/perfect-scrollbar.min.css">
-    <link href="/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+    <link href="/assets/css/material-dashboard-pro.min.css?v=2.1.0" rel="stylesheet" />
     <link href="/assets/css/lib/daftar.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 
     <!-- JS CORE -->
     <script src="/assets/js/core/jquery.min.js"></script>
