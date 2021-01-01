@@ -1,0 +1,25 @@
+.form-section{
+display: none;
+}
+.form-section.current{
+display: inherit;
+}
+.forkps{
+display: none;
+}
+.forkps.current{
+display: inherit;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.d-full {
+    display: inline;
+}
