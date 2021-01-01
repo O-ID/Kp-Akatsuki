@@ -129,7 +129,7 @@
                                 <div class="marker ruang-ekskul" rel="tooltip" data-html="true" data-title='<b>RUANG EKSKUL</b> </br> <img src="assets/img/denah/musholla.jpg" style="width:160px">'></div>
                                 <div class="marker bengkel-motor" rel="tooltip" data-html="true" data-title='<b>BENGKEL MOTOR</b> </br> <img src="assets/img/denah/bengkel motor.jpg" style="width:160px">'></div>
                 
-                                <div class="marker halaman-sekolah" rel="tooltip" data-html="true" data-title='<b>HALAMAN SEKOLAH</b> </br> <img src="assets/img/denah/musholla.jpg" style="width:160px">'></div>
+                                <div class="marker halaman-sekolah" rel="tooltip" data-html="true" data-title='<b>HALAMAN SEKOLAH</b> </br> <img src="assets/img/denah/halaman.jpg" style="width:160px">'></div>
                                 
                                 <div class="marker labkom-1" rel="tooltip" data-html="true" data-title='<b>LAB KOMPUTER 1</b> </br> <img src="assets/img/denah/musholla.jpg" style="width:160px">'></div>
                                 <div class="marker labkom-2" rel="tooltip" data-html="true" data-title='<b>LAB KOMPUTER 2</b> </br> <img src="assets/img/denah/musholla.jpg" style="width:160px">'></div>
