@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Struktur;
 use DataTables;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 class StrukturController extends Controller
 {
@@ -16,41 +17,61 @@ class StrukturController extends Controller
     // }
 
     public function index()
-    {  
-        return view('page.admin.struktur.struktur-index');
+    {
+        if(Session::has('LoginAdmin'))
+        {
+            return view('page.admin.struktur.struktur-index');
+        }else{
+            return redirect('/')->with('status', 'Anda Bukan Admin');
+        }
     }
 
     public function dataTable()
     {
-        $data = Struktur::orderBy('struktur.id_struktur', 'desc')->get();
-        return DataTables::of($data)
-        ->addColumn('action', function ($data) {
-            return '
-                <a href="'. route('admin.struktur.edit', $data->id_struktur) .'" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Edit">
-                    <i class="material-icons">edit</i>
-                    <div class="ripple-container"></div>
-                </a>
-            ';
-        })
-        ->rawColumns(['action'])
-        ->make(true);
+        if(Session::has('LoginAdmin'))
+        {
+            $data = Struktur::orderBy('struktur.id_struktur', 'desc')->get();
+            return DataTables::of($data)
+            ->addColumn('action', function ($data) {
+                return '
+                    <a href="'. route('admin.struktur.edit', $data->id_struktur) .'" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Edit">
+                        <i class="material-icons">edit</i>
+                        <div class="ripple-container"></div>
+                    </a>
+                ';
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }else{
+            return redirect('/')->with('status', 'Anda Bukan Admin');
+        }
     }
 
     public function edit($id)
     {
-        $struktur = Struktur::find($id);
-        return view('page.admin.struktur.struktur-form', [
-            'struktur'  => $struktur,
-        ]);
+        if(Session::has('LoginAdmin'))
+        {
+            $struktur = Struktur::find($id);
+            return view('page.admin.struktur.struktur-form', [
+                'struktur'  => $struktur,
+            ]);
+        }else{
+            return redirect('/')->with('status', 'Anda Bukan Admin');
+        }
     }
 
     public function update(Request $request, $id)
     {
-        $struktur = Struktur::find($id);
-        $struktur->nama_pejabat = $request->get('nama_pejabat', $struktur->nama_pejabat);
-        $struktur->save();
+        if(Session::has('LoginAdmin'))
+        {
+            $struktur = Struktur::find($id);
+            $struktur->nama_pejabat = $request->get('nama_pejabat', $struktur->nama_pejabat);
+            $struktur->save();
 
-        return redirect(route('admin.struktur.index'));
+            return redirect(route('admin.struktur.index'));
+        }else{
+            return redirect('/')->with('status', 'Anda Bukan Admin');
+        }
     }
-    
+
 }

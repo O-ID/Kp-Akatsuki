@@ -25,7 +25,7 @@ class kontakkuc extends Controller
      */
     public function index()
     {
-        $data = modJangka::select('mulai', 'selesai')
+        $data = modJangka::select('mulai', 'selesai', 'status')
                 ->join('tapel', 'tapel.id_tapel', '=', 'jangka_daftar.id_tapel')
                 ->where('tapel.status', 1)
                 ->get();
@@ -49,6 +49,12 @@ class kontakkuc extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nik' => 'required|nik|unique:pendaftar',
+            'email' => 'required|email|unique:pendaftar',
+        ]);
+
+        //table ortu
         $ortu=new modOrtu();
         $ortu->nama_ayah=$request->namaayah;
         $ortu->pekerjaan_ayah=$request->pekerjaanayah;
@@ -191,8 +197,17 @@ class kontakkuc extends Controller
     //manual create
     public function daftar()
     {
+        $jangka= modJangka::select('mulai', 'selesai')
+        ->join('tapel', 'tapel.id_tapel', '=', 'jangka_daftar.id_tapel')
+        ->where('tapel.status', 1)
+        ->get();
         $data = modJurusan::all();
-        return view('conten.daftar', compact('data'));
+        if ($jangka[0]->selesai<date('Y-m-d')) {
+            return $this->index()-> with('errorr', 'Mohon Maaf Pendaftaran Telah Ditutup');
+            // return $jangka[0]->selesai;
+        }else{
+            return view('conten.daftar', compact('data'));
+        }
     }
 
 }

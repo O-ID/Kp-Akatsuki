@@ -42,6 +42,7 @@ Route::post('/registerPost', 'adminzone@registerPost');
 Route::post('/LoginAdmin', 'adminzone@LoginAdmin');
 Route::get('/logout', 'adminzone@logout');
 Route::get('/validasi', 'adminzone@getBasic');
+Route::get('/manajemen', 'adminzone@getManajemen');
 Route::get('/basic', 'adminzone@getBasicdata')->name('get.basicdata');
 
 Route::prefix('/admin')->group( function() {
@@ -51,5 +52,15 @@ Route::prefix('/admin')->group( function() {
         Route::get('/form/{id}', 'StrukturController@edit')->name('admin.struktur.edit');
         Route::post('/', 'StrukturController@store')->name('admin.struktur.store');
         Route::put('/{id}', 'StrukturController@update')->name('admin.struktur.put');
+    });
+    Route::prefix('/jangka-daftar')->group(function(){
+        Route::get('/jkdaftar', 'adminzone@getJkdaftar')->name('admin.getjkdaftar');
+        Route::post('/store', 'adminzone@storeJkdaftar')->name('admin.storejkdaftar');
+
+    });
+    Route::prefix('/tapel')->group(function(){
+        Route::get('/gettapel', 'adminzone@getTapel')->name('admin.gettapel');
+        Route::put('/update/{id}', 'adminzone@update')->name('admin.tapel.put');
+        Route::post('/store', 'adminzone@storeTapel')->name('admin.tapel.store');
     });
 });

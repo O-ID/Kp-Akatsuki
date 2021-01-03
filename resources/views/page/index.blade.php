@@ -12,7 +12,7 @@
                             Penerimaan Siswa Baru
                         @endif
                     </h2>
-                    <h4 class="mt-0">SMK Matsaratul Huda</h4>
+                    <h4 class="mt-0">SMKS ISLAM TANJUNG</h4>
                     <img src="/assets/img/favicon.png" alt="" width="150px">
                 </div>
             </div>
@@ -23,8 +23,17 @@
                             @if (Session::has('LoginAdmin'))
                                 <h5 class="card-title">Halaman Ini Hanya Untuk Admin Penerimaan Siswa Baru</h5>
                             @else
-                                <h5 class="card-title">Untuk Melakukan Pendaftaran Klik Tombol Pendaftaran Dibawah</h5>
-                                <a href="{{url('/daftar')}}" class="btn btn-warning pull-center">Daftar Sekarang</a>
+                                @foreach ($data as $datas)
+                                    @if ($datas->selesai>date('Y-m-d'))
+                                        <h5 class="card-title">Untuk Melakukan Pendaftaran Klik Tombol Pendaftaran Dibawah</h5>
+                                        <a href="{{url('/daftar')}}" class="btn btn-warning pull-center">Daftar Sekarang</a>
+                                    @else
+                                        <h3>Pendaftaran Telah Ditutup Harap Hubungi Administrator Pendaftaran Untuk Info Lebih Lanjut</h3>
+                                    @endif
+                                    @empty($datas)
+                                        <h3>Pendaftaran Belum Kami Buka, Mohon Tunggu</h3>
+                                    @endempty
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -44,14 +53,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        @if(session('status'))
-            md.showNotification("top","left","primary","{{ session('status') }}");
-        @endif
-        @if(session('errorr'))
-            md.showNotification("top","left","danger","{{ session('errorr') }}");
-        @endif
-    });
-</script>
 @endsection

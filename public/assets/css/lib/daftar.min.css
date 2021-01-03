@@ -10,6 +10,13 @@ display: none;
 .forkps.current{
 display: inherit;
 }
+.forjkdaftar{
+display: none;
+}
+.forjkdaftar.current{
+display: inherit;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */

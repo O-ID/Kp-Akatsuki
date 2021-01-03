@@ -7,7 +7,7 @@
             <div class="card-header card-header-primary">
                 <div class="text-center">
                     <h2 class="mb-0 font-weight-bold">Penerimaan Siswa Baru</h2>
-                    <h4 class="mt-0">SMK Matsaratul Huda</h4>
+                    <h4 class="mt-0">SMKS Islam Tanjung</h4>
                 </div>
             </div>
             <div class="card-body">
@@ -30,6 +30,15 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <input class="d-none" type="text" name="forjurusan" value="" id="forjurusan" required>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     {{-- data siswa --}}
@@ -93,7 +102,7 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Tanggal Lahir</label>
-                                        <input readonly class="form-control-plaintext text-light vlDate" name="tglLahir" type="text" placeholder="yyyy-mm-dd" required>
+                                        <input readonly class="form-control-plaintext vlDate" name="tglLahir" type="text" placeholder="yyyy-mm-dd" required>
                                         <div class="dateSis"></div>
                                     </div>
                                 </div>

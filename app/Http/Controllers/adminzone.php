@@ -13,6 +13,7 @@ use App\modTapel;
 use App\modWali;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\Contracts\DataTable;
 use Yajra\Datatables\Datatables;
 class adminzone extends Controller
 {
@@ -21,13 +22,13 @@ class adminzone extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:admin');
+    // }
     public function index()
     {
-        $data = modJangka::select('mulai', 'selesai')
-                ->join('tapel', 'tapel.id_tapel', '=', 'jangka_daftar.id_tapel')
-                ->where('tapel.status', 1)
-                ->get();
-        return view('page.index', ['data' => $data]);
+        //
     }
 
     /**
@@ -46,9 +47,15 @@ class adminzone extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeTapel(Request $request)
     {
-        //
+
+        $hasil=new modTapel();
+
+        $hasil->tapel=$request->tapel_y1.'-'.$request->tapel_y2;
+        $hasil->status=0;
+        $hasil->save();
+        return redirect()->back();
     }
 
     /**
@@ -86,7 +93,12 @@ class adminzone extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update tapel
+        modTapel::where('status', 1)->update(['status'=>0]);
+        $tap=modTapel::find($id);
+        $tap->status=$request->status;
+        $tap->save();
+        return redirect('/manajemen')->with('status', 'Berhasil Mengubah '.$tap->tapel);
     }
 
     /**
@@ -172,5 +184,54 @@ class adminzone extends Controller
         {
             return redirect()->back();
         }
+    }
+    public function getManajemen(){
+        if(Session::has('LoginAdmin'))
+        {
+            $dtapel=modTapel::all();
+            return view('page.admin.manajemen.index-manajemen', ['dtapel' => $dtapel]);
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+    public function getJkdaftar(){
+        $data=modJangka::select('status','tapel', 'mulai', 'selesai')
+        ->join('tapel', 'jangka_daftar.id_tapel','=','tapel.id_tapel')
+        ->get();
+        return DataTables::of($data)->make();
+    }
+    public function getTapel(){
+        $data=modTapel::all();
+        return DataTables::of($data)
+        ->addColumn('statusconv', function($data){
+            if($data->status==0){
+                return
+                '
+                <form action="'.route('admin.tapel.put', $data->id_tapel).'" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+                    '.csrf_field().'
+                    <input type="text" name="status" class="d-none" value="1">
+                    <button type="submit" class="btn btn-success btn-sm btn-block">Aktifkan</button>
+                </form>
+                ';
+            }else{
+                return
+                '
+                <form action="'.route('admin.tapel.put', $data->id_tapel).'" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+                    '.csrf_field().'
+                    <input type="text" name="status" class="d-none" value="0">
+                    <button type="submit" class="btn btn-danger btn-sm btn-block">Nonaktifkan</button>
+                </form>
+                ';
+            }
+        })
+        ->rawColumns(['statusconv'])
+        ->make(true);
+    }
+    public function storeJkdaftar(Request $request){
+        return $request->all();
     }
 }

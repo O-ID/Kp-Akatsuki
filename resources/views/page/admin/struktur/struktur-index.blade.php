@@ -1,5 +1,5 @@
 @extends('desain.menu')
-@section('halaman', 'Validasi')
+@section('halaman', 'Struktur')
 @section('content')
 <div class="row">
     <div class="col-md-12">

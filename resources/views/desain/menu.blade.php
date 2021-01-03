@@ -124,7 +124,7 @@
 
   <!--   Core JS Files   -->
   <!-- <script src="https://demos.creative-tim.com/material-dashboard-pro/assets/js/plugins/jquery.dataTables.min.js"></script> -->
-  
+
   <script src="/assets/js/jquery.dataTables.min.js"></script>
   <script src="/assets/js/core/popper.min.js"></script>
   <script src="/assets/js/core/bootstrap-material-design.min.js"></script>
@@ -139,7 +139,13 @@
 
   <script>
     $(document).ready(function() {
-      md.initDashboardPageCharts();
+        md.initDashboardPageCharts();
+        @if(session('status'))
+            md.showNotification("top","left","primary","{{ session('status') }}");
+        @endif
+        @if(session('errorr'))
+            md.showNotification("top","left","danger","{{ session('errorr') }}");
+        @endif
     });
   </script>
 </body>
