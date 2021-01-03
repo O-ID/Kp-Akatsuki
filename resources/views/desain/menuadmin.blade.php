@@ -17,14 +17,14 @@
           <p>Pendaftaran</p>
         </a>
     </li>
-    <li class="nav-item {{ request()->is('validasi') ? 'active' : '' }}">
-        <a class="nav-link" href="/validasi">
+    <li class="nav-item {{ request()->is('admin/pendaftar') ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/pendaftar">
           <i class="material-icons">how_to_reg</i>
           <p>Validasi</p>
         </a>
     </li>
-    <li class="nav-item {{ request()->is('manajemen') ? 'active' : '' }}">
-        <a class="nav-link" href="/manajemen">
+    <li class="nav-item {{ request()->is('admin/manajemen') ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/manajemen">
           <i class="material-icons">settings_system_daydream</i>
           <p>Manajemen</p>
         </a>
