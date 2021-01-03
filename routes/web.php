@@ -41,10 +41,11 @@ Route::get('/register', function () {
 Route::post('/registerPost', 'adminzone@registerPost');
 Route::post('/LoginAdmin', 'adminzone@LoginAdmin');
 Route::get('/logout', 'adminzone@logout');
-Route::get('/validasi', 'adminzone@getBasic');
+// Route::get('/validasi', 'adminzone@getBasic');
 Route::get('/basic', 'adminzone@getBasicdata')->name('get.basicdata');
 
 Route::prefix('/admin')->group( function() {
+
     Route::prefix('/struktur')->group( function() {
         Route::get('/table', 'StrukturController@dataTable')->name('admin.struktur.dataTable');
         Route::get('/', 'StrukturController@index')->name('admin.struktur.index');
@@ -52,4 +53,11 @@ Route::prefix('/admin')->group( function() {
         Route::post('/', 'StrukturController@store')->name('admin.struktur.store');
         Route::put('/{id}', 'StrukturController@update')->name('admin.struktur.put');
     });
+
+    Route::prefix('/pendaftar')->group( function() {
+        Route::get('/table', 'PendaftarController@dataTable')->name('admin.pendaftar.dataTable');
+        Route::get('/', 'PendaftarController@index')->name('admin.pendaftar.index');
+        Route::get('/status/{id}/{status}', 'PendaftarController@status')->name('admin.pendaftar.status');
+    });
+
 });
