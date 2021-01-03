@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card">
         <div class="card-header card-header-primary">
-            <h2 class="card-title">Struktur</h2>
+            <h4 class="card-title">Struktur</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
