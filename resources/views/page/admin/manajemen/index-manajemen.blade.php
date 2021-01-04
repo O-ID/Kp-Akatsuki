@@ -128,16 +128,16 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
+        <div class="forjkdaftar current card" id="card5">
             <div class="card-header card-header-primary">
-                <h2 class="card-title">Tahun Pelajaran</h2>
+                <h2 class="card-title">Jurusan</h2>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table usertable">
+                    <table class="table usertable3">
                         <thead class=" text-primary">
-                            <td>Nama Jabatan</td>
-                            <td>Nama Pejabat</td>
+                            <td>ID</td>
+                            <td>Nama Jurusan</td>
                             <td>Aksi</td>
                         </thead>
                         <tbody>
@@ -145,6 +145,39 @@
                     </table>
                 </div>
             </div>
+            <div class="card-footer pb-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-right">
+                            <button class="btn btn-warning btn-sm" type="button" id="tambahjurusan">Tambah Jurusan</button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="forjkdaftar card" id="card6">
+            <form action="{{route('admin.jurusan.store')}}" method="post" autocomplete="false">
+                {{ csrf_field() }}
+                <div class="card-header card-header-primary">
+                    <h2 class="card-title">Tambah Jurusan</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group bmd-form-group is-filled">
+                        <label class="bmd-label-floating">Nama Jurusan</label>
+                        <input type="text" class="form-control text-center" name="tnamajurusan" required>
+                    </div>
+                </div>
+                <div class="card-footer pb-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-right">
+                                <button class="btn btn-danger btn-sm" type="button" id="tblbataljurusan">Batal</button>
+                                <button class="btn btn-warning btn-sm" type="submit">Simpan</button>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -185,6 +218,18 @@
                 },
             ]
         });
+        $('.usertable3').DataTable({
+            processing: true,
+            serverSide: true,
+            pageLength: 5,
+            lengthMenu: [5, 10],
+            ajax: "{{route('admin.getjurusan')}}",
+            columns: [
+                { data: 'id_jurusan'},
+                { data: 'nama_jurusan'},
+                { data: 'aksi'},
+            ]
+        });
 
         $('.datepicker').datepicker({
             format: "yyyy-mm-dd",
@@ -213,6 +258,14 @@
         $('.card .card-footer .container .row .col #tblbatal').click(function(){
             $('.row .col-md-6 #card4').removeClass('ld ld-fade-out current');
             $('.row .col-md-6 #card3').addClass('ld ld-fade-in current');
+        });
+        $('.card .card-footer .container .row .col #tambahjurusan').click(function(){
+            $('.row .col-md-12 #card5').removeClass('ld ld-fade-out current');
+            $('.row .col-md-12 #card6').addClass('ld ld-fade-in current');
+        });
+        $('.card .card-footer .container .row .col #tblbataljurusan').click(function(){
+            $('.row .col-md-12 #card6').removeClass('ld ld-fade-out current');
+            $('.row .col-md-12 #card5').addClass('ld ld-fade-in current');
         });
     });
 </script>
