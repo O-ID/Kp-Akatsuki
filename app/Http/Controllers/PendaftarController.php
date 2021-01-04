@@ -10,10 +10,14 @@ use DataTables;
 
 class PendaftarController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth:admin');
-    // }
+    public function __construct()
+    {
+        // $this->middleware('auth:admin');
+        if(!Session::has('LoginAdmin'))
+        {
+            return redirect()->back();
+        }
+    }
 
     public function index()
     {  
