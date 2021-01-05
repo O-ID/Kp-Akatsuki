@@ -50,7 +50,7 @@ class kontakkuc extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nik' => 'required|nik|unique:pendaftar',
+            // 'nikktp' => 'required|unique:pendaftar',
             'email' => 'required|email|unique:pendaftar',
         ]);
 
