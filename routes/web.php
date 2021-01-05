@@ -58,7 +58,7 @@ Route::prefix('/admin')->group( function() {
         Route::post('/', 'StrukturController@store')->name('admin.struktur.store');
         Route::put('/{id}', 'StrukturController@update')->name('admin.struktur.put');
     });
-    Route::get('/manajemen', 'adminzone@getManajemen');
+    Route::get('/manajemen', 'adminzone@getManajemen')->name('admin.manajemen.index');
     Route::prefix('/jangka-daftar')->group(function(){
         Route::get('/jkdaftar', 'adminzone@getJkdaftar')->name('admin.getjkdaftar');
         Route::post('/store', 'adminzone@storeJkdaftar')->name('admin.storejkdaftar');
