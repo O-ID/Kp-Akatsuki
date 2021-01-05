@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\modPendaftar;
 use App\modRegistrasi;
 use DataTables;
+use Illuminate\Support\Facades\Session;
 
 class PendaftarController extends Controller
 {
