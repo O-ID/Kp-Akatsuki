@@ -3,8 +3,8 @@
 <head>
 
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>PSB --Pendaftaran Siswa Baru</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -12,17 +12,17 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="/assets/css/animate.css" rel="stylesheet" />
-    <link href="/assets/css/transition.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/datepick/css/bootstrap-datepicker3.min.css">
-    <link rel="stylesheet" href="/assets/css/perfect-scrollbar.min.css">
-    <link href="/assets/css/material-dashboard-pro.min.css?v=2.1.0" rel="stylesheet" />
-    <link href="/assets/css/lib/daftar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/transition.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/datepick/css/bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/perfect-scrollbar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard-pro.min.css?v=2.1.0') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/daftar.min.css') }}">
 
     <!-- JS CORE -->
-    <script src="/assets/js/core/jquery.min.js"></script>
-    <script src="/assets/datepick/js/bootstrap-datepicker.min.js"></script>
-    <script src="/assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/datepick/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
 
 </head>
 
@@ -125,17 +125,17 @@
   <!--   Core JS Files   -->
   <!-- <script src="https://demos.creative-tim.com/material-dashboard-pro/assets/js/plugins/jquery.dataTables.min.js"></script> -->
 
-  <script src="/assets/js/jquery.dataTables.min.js"></script>
-  <script src="/assets/js/core/popper.min.js"></script>
-  <script src="/assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="/assets/js/index.umd.js"></script>
-  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script src="/assets/js/plugins/chartist.min.js"></script>
-  <script src="/assets/js/material-dashboard.js?v=2.1.0"></script>
-  <script src="/assets/js/plugins/parsley.min.js"></script>
-  <script src="/assets/js/lib/daftar.min.js"></script>
-  <script src="/assets/js/lib/menu.min.js"></script>
+  <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}"></script>
+  <script src="{{ asset('assets/js/index.umd.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+  <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+  <script src="{{ asset('assets/js/plugins/chartist.min.js') }}"></script>
+  <script src="{{ asset('assets/js/material-dashboard.js?v=2.1.0') }}"></script>
+  <script src="{{ asset('assets/js/plugins/parsley.min.js') }}"></script>
+  <script src="{{ asset('assets/js/lib/daftar.min.js') }}"></script>
+  <script src="{{ asset('assets/js/lib/menu.min.js') }}"></script>
 
   <script>
     $(document).ready(function() {

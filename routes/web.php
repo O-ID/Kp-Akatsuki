@@ -17,7 +17,7 @@ use App\Struktur;
 // });
 Route::get('/denah', function () {
     return view('page.denah');
-});
+})->name('pengunjung.struktur');
 Route::get('/struktur', function () {
     $struktur  = Struktur::get();
     $a = [];
@@ -27,12 +27,17 @@ Route::get('/struktur', function () {
     return view('page.struktur', [
         'struktur' => $a,
     ]);
-});
+})->name('pengunjung.denah');
 
 //ody zone
-Route::resource('/', 'kontakkuc');
-Route::get('/kelulusan', 'kontakkuc@show');
-Route::get('/daftar', 'kontakkuc@daftar');
+Route::resource('/', 'kontakkuc', [
+    "names" => [
+        'index' => 'pengunjung.index',
+        'store' => 'pendaftar.store',
+    ]
+]);
+Route::get('/kelulusan', 'kontakkuc@show')->name('pengunjung.kelulusan');
+Route::get('/daftar', 'kontakkuc@daftar')->name('pengunjung.daftar');
 Route::post('/daftar/store','kontakkuc@store')->name('form.formSubmit');
 //adminzone
 Route::get('/register', function () {

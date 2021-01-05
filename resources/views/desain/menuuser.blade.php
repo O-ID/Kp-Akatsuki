@@ -1,6 +1,6 @@
 <ul class="nav">
     <li class="nav-item {{ request()->is('/') || request()->is('daftar') ? 'active' : '' }}">
-      <a class="nav-link" href="/">
+      <a class="nav-link" href="{{ route('pengunjung.index') }}">
         <i class="material-icons">dashboard</i>
         <p>Beranda</p>
       </a>
@@ -13,13 +13,13 @@
       <div class="collapse" id="pagesExamples">
           <ul class="nav">
               <li class="nav-item {{ request()->is('denah') ? 'active' : '' }}">
-                  <a class="nav-link" href="/denah">
+                  <a class="nav-link" href="{{ route('pengunjung.denah') }}">
                     <i class="material-icons">location_ons</i>
                     <p>Denah Seskolah</p>
                   </a>
               </li>
               <li class="nav-item {{ request()->is('struktur') ? 'active' : '' }}">
-                  <a class="nav-link" href="/struktur">
+                  <a class="nav-link" href="{{ route('pengunjung.struktur') }}">
                     <i class="material-icons">library_books</i>
                     <p>Struktur Sekolah</p>
                   </a>
@@ -28,7 +28,7 @@
         </div>
     </li>
     <li class="nav-item {{ request()->is('kelulusan') ? 'active' : '' }}">
-      <a class="nav-link" href="/kelulusan">
+      <a class="nav-link" href="{{ route('pengunjung.kelulusan') }}">
         <i class="material-icons">content_paste</i>
         <p>Daftar Kelulusan</p>
       </a>
