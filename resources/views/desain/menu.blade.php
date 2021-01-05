@@ -28,7 +28,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="black" data-image="/assets/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="{{ asset('assets/img/sidebar-2.jpg') }}">
       <div class="logo"><a href="/" class="simple-text logo-normal">
         SMKS ISLAM TANJUNG
         </a></div>
