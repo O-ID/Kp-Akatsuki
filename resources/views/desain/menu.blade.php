@@ -140,11 +140,11 @@
   <script>
     $(document).ready(function() {
         md.initDashboardPageCharts();
-        @if(session('status'))
-            md.showNotification("top","left","primary","{{ session('status') }}");
+        @if(session()->has('status'))
+            md.showNotification("top","left","primary","{{ session()->get('status') }}");
         @endif
-        @if(session('errorr'))
-            md.showNotification("top","left","danger","{{ session('errorr') }}");
+        @if(session()->has('errorr'))
+            md.showNotification("top","left","danger","{{ session()->get('errorr') }}");
         @endif
     });
   </script>

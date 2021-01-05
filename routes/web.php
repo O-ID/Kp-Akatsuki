@@ -69,6 +69,13 @@ Route::prefix('/admin')->group( function() {
         Route::put('/update/{id}', 'adminzone@update')->name('admin.tapel.put');
         Route::post('/store', 'adminzone@storeTapel')->name('admin.tapel.store');
     });
+    Route::prefix('/jurusan')->group(function(){
+        Route::get('/getjurusan', 'adminzone@getJurusan')->name('admin.getjurusan');
+        Route::put('/update/{id}', 'adminzone@updateJurusan')->name('admin.jurusan.put');
+        Route::delete('/destroy/{id}', 'adminzone@hapusJurusan')->name('admin.jurusan.hapus');
+        Route::post('/store', 'adminzone@storeJurusan')->name('admin.jurusan.store');
+    });
+
     Route::prefix('/pendaftar')->group( function() {
         Route::get('/table', 'PendaftarController@dataTable')->name('admin.pendaftar.dataTable');
         Route::get('/', 'PendaftarController@index')->name('admin.pendaftar.index');

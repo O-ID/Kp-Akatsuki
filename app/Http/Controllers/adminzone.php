@@ -50,12 +50,15 @@ class adminzone extends Controller
     public function storeTapel(Request $request)
     {
 
+        if(Session::has('LoginAdmin'))
+        {
         $hasil=new modTapel();
 
         $hasil->tapel=$request->tapel_y1.'-'.$request->tapel_y2;
         $hasil->status=0;
         $hasil->save();
         return redirect()->back();
+        }
     }
 
     /**
@@ -94,11 +97,14 @@ class adminzone extends Controller
     public function update(Request $request, $id)
     {
         //update tapel
-        modTapel::where('status', 1)->update(['status'=>0]);
-        $tap=modTapel::find($id);
-        $tap->status=$request->status;
-        $tap->save();
-        return redirect('/manajemen')->with('status', 'Berhasil Mengubah '.$tap->tapel);
+        if(Session::has('LoginAdmin'))
+        {
+            modTapel::where('status', 1)->update(['status'=>0]);
+            $tap=modTapel::find($id);
+            $tap->status=$request->status;
+            $tap->save();
+            return redirect('admin/manajemen')->with('status', $tap->tapel.' Sekarang Sudah Aktif');
+        }
     }
 
     /**
@@ -165,26 +171,26 @@ class adminzone extends Controller
         Session::flush();
         return redirect('/')->with('status','Anda Sudah Keluar Sebagai Admin');
     }
-    public function getBasicData()
-    {
-        $users = modRegistrasi::select('registrasi.id_registrasi', 'registrasi.status','pendaftar.id_jurusan', 'registrasi.tgl_registrasi', 'pendaftar.nama_lengkap','jurusan.nama_jurusan')
-        ->join('pendaftar', 'pendaftar.id_pendaftar', '=', 'registrasi.id_pendaftar')
-        ->join('jurusan', 'jurusan.id_jurusan','=', 'pendaftar.id_jurusan')
-        ->get();
+    // public function getBasicData()
+    // {
+    //     $users = modRegistrasi::select('registrasi.id_registrasi', 'registrasi.status','pendaftar.id_jurusan', 'registrasi.tgl_registrasi', 'pendaftar.nama_lengkap','jurusan.nama_jurusan')
+    //     ->join('pendaftar', 'pendaftar.id_pendaftar', '=', 'registrasi.id_pendaftar')
+    //     ->join('jurusan', 'jurusan.id_jurusan','=', 'pendaftar.id_jurusan')
+    //     ->get();
 
-        return Datatables::of($users)->make();
-    }
-    public function getBasic()
-    {
-        if(Session::has('LoginAdmin'))
-        {
-            return view('page.admin.validasi');
-        }
-        else
-        {
-            return redirect()->back();
-        }
-    }
+    //     return Datatables::of($users)->make();
+    // }
+    // public function getBasic()
+    // {
+    //     if(Session::has('LoginAdmin'))
+    //     {
+    //         return view('page.admin.validasi');
+    //     }
+    //     else
+    //     {
+    //         return redirect()->back();
+    //     }
+    // }
     public function getManajemen(){
         if(Session::has('LoginAdmin'))
         {
@@ -232,6 +238,121 @@ class adminzone extends Controller
         ->make(true);
     }
     public function storeJkdaftar(Request $request){
-        return $request->all();
+        if(Session::has('LoginAdmin'))
+        {
+            $simpan=new modJangka();
+            $tap=$simpan::where('id_tapel', $request->tapeljangka)->first();
+            if (!$tap) {
+                $simpan->id_tapel=$request->tapeljangka;
+                $simpan->mulai=$request->buka;
+                $simpan->selesai=$request->tutup;
+                if ($simpan->save()) {
+                    return redirect('admin/manajemen')->with('status', 'Jangka Daftar Berhasil Ditambahkan');
+                }else{
+                    return redirect()->back()->with('errorr', 'Jangka Daftar Gagal Ditambahkan');
+                }
+            }else{
+                return redirect()->back()->with('errorr', 'Data sudah ada, mohon pilih tahun pelajaran dengan benar');
+            }
+        }
+    }
+    public function getJurusan(){
+        $data = modJurusan::all();
+        return Datatables::of($data)
+        ->addColumn('aksi', function($data){
+            return
+            '
+            <button type="button" class="btn btn-warning btn-link btn-sm" data-toggle="modal" data-target="#exampleModalCenter'.$data->id_jurusan.'">
+                <i class="material-icons">edit</i>
+                <div class="ripple-container"></div>
+            </button>
+            <div class="modal fade" id="exampleModalCenter'.$data->id_jurusan.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="'.route('admin.jurusan.put', $data->id_jurusan).'" method="post">
+                            <input type="hidden" name="_method" value="PUT">
+                            '.csrf_field().'
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Edit Jurusan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label class="bmd-label-floating">ID Jurusan</label>
+                                <input readOnly type="text" class="form-control" value="'.$data->id_jurusan.'" name="ideditjurusan" required>
+                                <label class="bmd-label-floating">Nama Jurusan</label>
+                                <input type="text" class="form-control" value="'.$data->nama_jurusan.'" name="namaeditjurusan" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-sm mr-2" data-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-warning btn-sm">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#hapusexampleModalCenter'.$data->id_jurusan.'">
+                <i class="material-icons">delete</i>
+                <div class="ripple-container"></div>
+            </button>
+            <div class="modal fade" id="hapusexampleModalCenter'.$data->id_jurusan.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Hapus Jurusan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Yakin ingin menghapus Jurusan '.$data->nama_jurusan.' ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm mr-2" data-dismiss="modal">Batal</button>
+                            <form method="POST" action="'.route('admin.jurusan.hapus', $data->id_jurusan).'">
+                                '.csrf_field().'
+                                '.method_field("DELETE").'
+                                <button type="submit" class="btn btn-danger btn-sm">Ya, Hapus</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ';
+        })
+        ->rawColumns(['aksi'])
+        ->make(true);
+    }
+    public function updateJurusan(Request $request, $id){
+        if(Session::has('LoginAdmin'))
+        {
+            modJurusan::where('id_jurusan', $id)->update(['nama_jurusan'=> $request->namaeditjurusan]);
+            return redirect()->back()->with('status', 'Jurusan Berhasil Di Edit');
+        }
+    }
+    public function hapusJurusan($id){
+        if(Session::has('LoginAdmin'))
+        {
+            $jur=modJurusan::findOrFail($id);
+            if ($jur->delete()) {
+                return redirect()->back()->with('status', $jur->nama_jurusan.' Berhasil Dihapus');
+            }else{
+                return redirect()->back()->with('status', $jur->nama_jurusan.' Gagal Dihapus');
+            }
+
+        }
+    }
+    public function storeJurusan(Request $request){
+        if(Session::has('LoginAdmin'))
+        {
+            $tambah=new modJurusan();
+            $tambah->nama_jurusan=$request->tnamajurusan;
+            if ($tambah->save()) {
+                return redirect()->back()->with('status', 'Jurusan Berhasil Ditambah');
+            }else{
+                return redirect()->back()->with('errorr', 'Jurusan Gagal Ditambah');
+            }
+        }
     }
 }
