@@ -17,7 +17,7 @@ use App\Struktur;
 // });
 Route::get('/denah', function () {
     return view('page.denah');
-})->name('pengunjung.struktur');
+})->name('pengunjung.denah');
 Route::get('/struktur', function () {
     $struktur  = Struktur::get();
     $a = [];
@@ -27,7 +27,7 @@ Route::get('/struktur', function () {
     return view('page.struktur', [
         'struktur' => $a,
     ]);
-})->name('pengunjung.denah');
+})->name('pengunjung.struktur');
 
 //ody zone
 Route::resource('/', 'kontakkuc', [
