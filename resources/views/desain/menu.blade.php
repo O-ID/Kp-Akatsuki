@@ -29,9 +29,14 @@
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="{{ asset('assets/img/sidebar-2.jpg') }}">
-      <div class="logo"><a href="/" class="simple-text logo-normal">
-        SMKS ISLAM TANJUNG
-        </a></div>
+      <div class="logo">
+        <div class="row">
+          <div class="col text center">
+            <a href="{{ route('pengunjung.index') }}"><img class="mx-auto d-block" src="{{ asset('assets/img/favicon.png') }}" style="width: 100px"></a>
+          </div>
+        </div>
+        <a href="{{ route('pengunjung.index') }}" class="simple-text text-center logo-normal">SMKS ISLAM TANJUNG</a>
+        </div>
       <div class="sidebar-wrapper">
         @if (Session::has('LoginAdmin'))
             @include('desain.menuadmin')
