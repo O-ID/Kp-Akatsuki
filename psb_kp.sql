@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jan 2021 pada 02.48
+-- Waktu pembuatan: 08 Jan 2021 pada 03.52
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.26
 
@@ -65,7 +65,7 @@ CREATE TABLE `jangka_daftar` (
 --
 
 INSERT INTO `jangka_daftar` (`id_jangkar`, `id_tapel`, `mulai`, `selesai`) VALUES
-(1, 2, '2021-01-01', '2021-06-21'),
+(1, 2, '2021-01-07', '2021-06-21'),
 (2, 1, '2018-12-01', '2019-01-30');
 
 -- --------------------------------------------------------
@@ -114,13 +114,7 @@ CREATE TABLE `ortu` (
 --
 
 INSERT INTO `ortu` (`id_ortu`, `nama_ayah`, `pekerjaan_ayah`, `kebutuhan_khusus_ayah`, `pendidikan_ayah`, `penghasilan_ayah`, `thn_lahir_ayah`, `nama_ibu`, `kebutuhan_khusus_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `thn_lahir_ibu`) VALUES
-(4, 'qweqw', 'qweqw', 'qweqwe', 'qweq', 'qweqe', 0, '123', 'qweqw', 'qweqwe', 'qweqwe', 'qweqwe', 0),
-(5, 'qweqw', 'qweqw', 'qweqwe', 'qweq', 'qweqe', 1988, '123', 'qweqw', 'qweqwe', 'qweqwe', 'qweqwe', 1988),
-(6, 'amirul', 'tani', 'tidak', 'SMP Sederajat', '< 1.000.000', 1888, 'mukminah', 'tidak', 'tani', 'SMP Sederajat', '< 1.000.000', 1888),
-(7, 'amirul', 'tani', 'tidak', 'SMP Sederajat', '< 1.000.000', 1888, 'mukminah', 'tidak', 'tani', 'SMP Sederajat', '< 1.000.000', 1888),
-(8, 'amirul', 'tani', 'tidak', 'SMP Sederajat', '< 1.000.000', 1988, 'mukminah', 'tidak', 'tani', 'SMP Sederajat', '< 1.000.000', 1988),
-(9, 'amirul', 'tani', 'tidak', 'SMP Sederajat', '< 1.000.000', 1988, 'mukminah', 'tidak', 'tani', 'SMP Sederajat', '< 1.000.000', 1988),
-(10, 'Amirul', 'Tani', 'Tidak', 'SD Sederajat', '< 1.000.000', 1960, 'Mukminah', 'Tidak', 'Tani', 'SMA Sederajat', '< 1.000.000', 1960);
+(1, 'Amirul', 'Tani', 'Tidak', 'SD Sederajat', '< 1.000.000', 1888, 'Mukminah', 'Tidak', 'Tani', 'SD Sederajat', '< 1.000.000', 1888);
 
 -- --------------------------------------------------------
 
@@ -179,8 +173,7 @@ CREATE TABLE `pendaftar` (
 --
 
 INSERT INTO `pendaftar` (`id_pendaftar`, `id_tapel`, `id_wali`, `id_ortu`, `id_jurusan`, `nama_lengkap`, `jk`, `nisn`, `nis`, `no_seri_ijazah`, `no_seri_skhun`, `no_un`, `nik`, `npsn_sekolah_asal`, `tmpt_lahir`, `tgl_lahir`, `agama`, `berkebutuhan_khusus`, `alamat_asal`, `dusun`, `rt_rw`, `desa`, `kecamatan`, `kota`, `provinsi`, `jenis_tinggal`, `no_telp_rumah`, `no_hp`, `email`, `no_kks`, `no_kps`, `alasan_layak`, `no_kip`, `nama_kip`, `alasan_tolak_kip`, `no_rek_akta_lahir`, `lintang`, `bujur`, `tinggi_badan`, `berat_badan`, `jarak_sekolah`, `waktu_tempuh_sekolah`, `jumlah_saudara`) VALUES
-(2, 2, 4, 9, 1, 'Nur Kholis', 'L', '123456789', '123456789', '123456789', '123456789', '123456789', '123123345', '123456789', 'Sumenep', '2020-01-30', 'kristen', 'ss', 'Kaduara Timur', 'Gunung', '08/08', 'Kaduara Timur', 'Pragaan', 'Sumenep', 'Jawa Timur', 'Rumah Ortu', '23498234', '095233889578', 'nurkholispragaan@gmail.com', '123456789', '123456789', 'Miskin', '123456789', 'Nur Kholis', 'Kaya', '123456789', '123456789', '123456789', 128, 60, '8', '00:00:30', 2),
-(3, 2, 5, 10, 1, 'Nur Kholis', 'L', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', 'Sumenep', '2020-01-28', 'islam', 'Tidak', 'Kaduara Timur', 'Gunung', '08/08', 'Kaduara Timur', 'Pragaan', 'Sumenep', 'Jawa Timur', 'Tetap', '085233889578', '085233889578', 'tes@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 128, 60, '8', '00:00:08', 8);
+(1, 2, 1, 1, 1, 'Nur Kholis', 'L', '1234567891', '1234567891', '1234567891', '1234567891', '1234567891', '12345678910', '1234567891', 'Sumenep', '2020-01-28', 'islam', 'Tidak', 'Kaduara Timur', 'Gunung', '08/08', 'Kaduara Timur', 'Pragaan', 'Sumenep', 'Jawa Timur', 'Tetap', '085233889578', '085233889578', 'fulan@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123, 60, '4', '00:00:04', 4);
 
 -- --------------------------------------------------------
 
@@ -200,8 +193,7 @@ CREATE TABLE `registrasi` (
 --
 
 INSERT INTO `registrasi` (`id_registrasi`, `id_pendaftar`, `tgl_registrasi`, `status`) VALUES
-(1, 2, '2021-01-02', '1'),
-(2, 3, '2021-01-05', '1');
+(1, 1, '2021-01-08', '0');
 
 -- --------------------------------------------------------
 
@@ -255,8 +247,8 @@ CREATE TABLE `tapel` (
 --
 
 INSERT INTO `tapel` (`id_tapel`, `tapel`, `status`) VALUES
-(1, '2019-2020', '1'),
-(2, '2020-2021', '0'),
+(1, '2019-2020', '0'),
+(2, '2020-2021', '1'),
 (3, '2021-2022', '0');
 
 -- --------------------------------------------------------
@@ -267,11 +259,11 @@ INSERT INTO `tapel` (`id_tapel`, `tapel`, `status`) VALUES
 
 CREATE TABLE `wali` (
   `id_wali` int(11) NOT NULL,
-  `nama_wali` varchar(255) NOT NULL,
+  `nama_wali` varchar(255) DEFAULT NULL,
   `pekerjaan_wali` varchar(100) DEFAULT NULL,
   `pendidikan_wali` varchar(100) DEFAULT NULL,
   `penghasilan_wali` varchar(100) DEFAULT NULL,
-  `thn_wali` int(4) NOT NULL
+  `thn_wali` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -279,8 +271,7 @@ CREATE TABLE `wali` (
 --
 
 INSERT INTO `wali` (`id_wali`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`, `penghasilan_wali`, `thn_wali`) VALUES
-(4, 'amirul', 'tani', 'SMP Sederajat', '< 1.000.000', 1888),
-(5, 'Amirul', 'Tani', 'SMA Sederajat', '< 1.000.000', 1960);
+(1, NULL, NULL, 'SD Sederajat', '< 1.000.000', NULL);
 
 --
 -- Indexes for dumped tables
@@ -381,19 +372,19 @@ ALTER TABLE `jurusan`
 -- AUTO_INCREMENT untuk tabel `ortu`
 --
 ALTER TABLE `ortu`
-  MODIFY `id_ortu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_ortu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pendaftar`
 --
 ALTER TABLE `pendaftar`
-  MODIFY `id_pendaftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pendaftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `registrasi`
 --
 ALTER TABLE `registrasi`
-  MODIFY `id_registrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_registrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `struktur`
@@ -411,7 +402,7 @@ ALTER TABLE `tapel`
 -- AUTO_INCREMENT untuk tabel `wali`
 --
 ALTER TABLE `wali`
-  MODIFY `id_wali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_wali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

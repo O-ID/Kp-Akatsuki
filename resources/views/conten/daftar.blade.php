@@ -417,21 +417,21 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <label class="bmd-label-floating">Nama Wali</label>
-                                        <input type="text" class="form-control" name="namawali" required autofocus>
+                                        <input type="text" class="form-control" name="namawali" placeholder="*Isian ini boleh kosong">
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="bmd-label-floating">Tahun Lahir Wali</label>
-                                        <input type="number" data-parsley-type="integer" maxlength="4" minlength="4" name="thnwali" class="form-control" required>
+                                        <input type="number" placeholder="*Isian ini boleh kosong" data-parsley-type="integer" maxlength="4" minlength="4" name="thnwali" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row pt-4">
                                     <div class="col-sm-4">
                                         <label class="bmd-label-floating">Pekerjaan Wali</label>
-                                        <input type="text" class="form-control" name="pekerjaanwali" required >
+                                        <input type="text" class="form-control" name="pekerjaanwali" placeholder="*Isian ini boleh kosong">
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="d-block btn-group" id="pendwali">
-                                        <input class="form-control d-none" type="text" name="forpendwali" id="forpendwali" required>
+                                        <input class="form-control d-none" type="text" name="forpendwali" id="forpendwali">
                                             <button type="button" class="btn btn-warning dropdown-toggle btn-block" name="pendidikanwali" value="" id="dropdownpendidikanwali" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Pendidikan
                                             </button>
@@ -444,10 +444,11 @@
                                                 <a class="dropdown-item" href="JavaScript:void(0);">S3</a>
                                             </div>
                                         </div>
+                                        <div class="category form-category">* Isian ini boleh kosong</div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="d-block btn-group" id="penghwali">
-                                        <input class="form-control d-none" type="text" name="forpenghwali" id="forpenghwali" required>
+                                        <input class="form-control d-none" type="text" name="forpenghwali" id="forpenghwali">
                                             <button type="button" class="btn btn-warning dropdown-toggle btn-block" name="penghasilanwali" value="" id="dropdownpenghasilanwali" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Penghasilan
                                             </button>
@@ -460,6 +461,7 @@
                                                 <a class="dropdown-item" href="JavaScript:void(0);"> > 5.000.000</a>
                                             </div>
                                         </div>
+                                        <div class="category form-category">* Isian ini boleh kosong</div>
                                     </div>
                                 </div>
                             </div>
