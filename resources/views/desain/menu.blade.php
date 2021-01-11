@@ -35,7 +35,7 @@
             <a href="{{ route('pengunjung.index') }}"><img class="mx-auto d-block" src="{{ asset('assets/img/favicon.png') }}" style="width: 100px"></a>
           </div>
         </div>
-        <a href="{{ route('pengunjung.index') }}" class="simple-text text-center logo-normal">SMKS ISLAM TANJUNG</a>
+        <a href="{{ route('pengunjung.index') }}" class="simple-text text-center logo-normal">SMK ISLAM TANJUNG</a>
         </div>
       <div class="sidebar-wrapper">
         @if (Session::has('LoginAdmin'))

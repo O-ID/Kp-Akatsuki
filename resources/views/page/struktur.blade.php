@@ -85,7 +85,7 @@
         <div class="card-header card-header-primary">
             <div class="text-center">
                 <h2 class="mb-0 font-weight-bold">Struktur Organisasi</h2>
-                <h4 class="mt-0">SMKS ISLAM TANJUNG</h4>
+                <h4 class="mt-0">SMK ISLAM TANJUNG</h4>
             </div>
         </div>
         <div class="card-body">

@@ -12,7 +12,7 @@
                             Penerimaan Siswa Baru
                         @endif
                     </h2>
-                    <h4 class="mt-0">SMKS ISLAM TANJUNG</h4>
+                    <h4 class="mt-0">SMK ISLAM TANJUNG</h4>
                     <img src="/assets/img/favicon.png" alt="" width="150px">
                 </div>
             </div>
