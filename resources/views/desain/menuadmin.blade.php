@@ -1,7 +1,7 @@
 <ul class="nav">
     <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('pengunjung.index') }}">
-          <i class="material-icons">dashboard</i>
+          <i class="material-icons">home</i>
           <p>Beranda</p>
         </a>
     </li>
@@ -9,6 +9,12 @@
         <a class="nav-link" href="{{ route('admin.struktur.index') }}">
           <i class="material-icons">recent_actors</i>
           <p>Struktur</p>
+        </a>
+    </li>
+    <li class="nav-item {{ request()->is('admin/denah') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.denah.index') }}">
+          <i class="material-icons">dashboard</i>
+          <p>Denah</p>
         </a>
     </li>
     <li class="nav-item {{ request()->is('daftar') ? 'active' : '' }}">

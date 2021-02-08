@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kontakkuc;
 use App\Struktur;
+use App\Denah;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +17,16 @@ use App\Struktur;
 //     return view('page.index');
 // });
 Route::get('/denah', function () {
-    return view('page.denah');
+    $denah  = Denah::get();
+    $a = [];
+    foreach ($denah as $key => $value) {
+        $a[$value->nama_tempat] = $value->foto_tempat;
+    }
+    return view('page.denah', [
+        "denah" => $a
+    ]);
 })->name('pengunjung.denah');
+
 Route::get('/struktur', function () {
     $struktur  = Struktur::get();
     $a = [];
@@ -58,6 +67,15 @@ Route::prefix('/admin')->group( function() {
         Route::post('/', 'StrukturController@store')->name('admin.struktur.store');
         Route::put('/{id}', 'StrukturController@update')->name('admin.struktur.put');
     });
+
+    Route::prefix('/denah')->group( function() {
+        Route::get('/table', 'DenahController@dataTable')->name('admin.denah.dataTable');
+        Route::get('/', 'DenahController@index')->name('admin.denah.index');
+        Route::get('/form/{id}', 'DenahController@edit')->name('admin.denah.edit');
+        Route::post('/', 'DenahController@store')->name('admin.denah.store');
+        Route::put('/{id}', 'DenahController@update')->name('admin.denah.put');
+    });
+
     Route::get('/manajemen', 'adminzone@getManajemen')->name('admin.manajemen.index');
     Route::prefix('/jangka-daftar')->group(function(){
         Route::get('/jkdaftar', 'adminzone@getJkdaftar')->name('admin.getjkdaftar');

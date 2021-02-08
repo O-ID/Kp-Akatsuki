@@ -128,8 +128,6 @@
   </div>
 
   <!--   Core JS Files   -->
-  <!-- <script src="https://demos.creative-tim.com/material-dashboard-pro/assets/js/plugins/jquery.dataTables.min.js"></script> -->
-
   <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}"></script>
@@ -141,6 +139,7 @@
   <script src="{{ asset('assets/js/plugins/parsley.min.js') }}"></script>
   <script src="{{ asset('assets/js/lib/daftar.min.js') }}"></script>
   <script src="{{ asset('assets/js/lib/menu.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/jasny-bootstrap.min.js') }}"></script>
 
   <script>
     $(document).ready(function() {

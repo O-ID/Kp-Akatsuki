@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jan 2021 pada 03.52
+-- Waktu pembuatan: 08 Feb 2021 pada 03.33
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.26
 
@@ -33,7 +33,6 @@ CREATE TABLE `admin` (
   `nama_admin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -42,10 +41,44 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '123123', 'odydahary1@gmail.com', '$2y$10$LHaNjgM4r6E3V9LW0rZuBOHTIuWvdbiEx71V44Jr.Fpd9QwEPnVNS', NULL, '2020-12-30 05:30:57', '2020-12-30 05:30:57'),
-(3, 'Ody Dahary', 'odybisn@gmail.com', '$2y$10$uz0uJOs7P151xKacBoF6BuTfjZwYaoFYcqFOqKkxweTJzZ5VryKs.', NULL, '2020-12-30 11:39:46', '2020-12-30 11:39:46'),
-(4, 'Admin', 'admin@sekolah.ac.id', '$2y$10$IJfY5d7lDA4smbg4tnwkJ.1NCxNTGP7z3IMzdmLodVt.DmDDV/d.K', NULL, '2020-12-30 11:41:57', '2020-12-30 11:41:57');
+INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(4, 'Admin', 'admin@sekolah.ac.id', '$2y$10$IJfY5d7lDA4smbg4tnwkJ.1NCxNTGP7z3IMzdmLodVt.DmDDV/d.K', '2020-12-30 11:41:57', '2020-12-30 11:41:57');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `denah`
+--
+
+CREATE TABLE `denah` (
+  `id_denah` int(11) NOT NULL,
+  `nama_tempat` varchar(100) DEFAULT NULL,
+  `foto_tempat` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `denah`
+--
+
+INSERT INTO `denah` (`id_denah`, `nama_tempat`, `foto_tempat`) VALUES
+(1, 'MUSHOLLA', '080221014424.jpg'),
+(2, 'KANTIN', '080221014245.jpg'),
+(3, 'TEMPAT PARKIR', '080221014711.jpg'),
+(4, 'KANTOR', '080221014324.jpg'),
+(5, 'X TBSM', '080221015102.jpg'),
+(6, 'XI TBSM', '080221015034.jpg'),
+(7, 'XII TBSM', '080221014728.jpg'),
+(8, 'RUANG OSIS', '080221023147.jpg'),
+(9, 'RUANG EKSKUL', '080221014459.JPG'),
+(10, 'BENGKEL MOTOR', '080221014152.jpg'),
+(11, 'LABKOM 1', '080221014355.jpg'),
+(12, 'LABKOM 2', '080221014407.jpg'),
+(13, 'AULA', '080221014116.jpg'),
+(14, 'KAMAR MANDI', '080221014230.jpg'),
+(15, 'X TKJ', '080221014656.jpg'),
+(16, 'XI TKJ', '080221015047.jpg'),
+(17, 'XII TKJ', '080221015011.jpg'),
+(18, 'HALAMAN SEKOLAH', '080221023159.jpg');
 
 -- --------------------------------------------------------
 
@@ -95,6 +128,7 @@ INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`) VALUES
 
 CREATE TABLE `ortu` (
   `id_ortu` int(11) NOT NULL,
+  `di_pendaftar` int(11) DEFAULT NULL,
   `nama_ayah` varchar(100) DEFAULT NULL,
   `pekerjaan_ayah` varchar(100) DEFAULT NULL,
   `kebutuhan_khusus_ayah` varchar(100) DEFAULT NULL,
@@ -113,8 +147,8 @@ CREATE TABLE `ortu` (
 -- Dumping data untuk tabel `ortu`
 --
 
-INSERT INTO `ortu` (`id_ortu`, `nama_ayah`, `pekerjaan_ayah`, `kebutuhan_khusus_ayah`, `pendidikan_ayah`, `penghasilan_ayah`, `thn_lahir_ayah`, `nama_ibu`, `kebutuhan_khusus_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `thn_lahir_ibu`) VALUES
-(1, 'Amirul', 'Tani', 'Tidak', 'SD Sederajat', '< 1.000.000', 1888, 'Mukminah', 'Tidak', 'Tani', 'SD Sederajat', '< 1.000.000', 1888);
+INSERT INTO `ortu` (`id_ortu`, `di_pendaftar`, `nama_ayah`, `pekerjaan_ayah`, `kebutuhan_khusus_ayah`, `pendidikan_ayah`, `penghasilan_ayah`, `thn_lahir_ayah`, `nama_ibu`, `kebutuhan_khusus_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `thn_lahir_ibu`) VALUES
+(1, NULL, 'Amirul', 'Tani', 'Tidak', 'SD Sederajat', '< 1.000.000', 1977, 'Mukminah', 'Tidak', 'Tani', 'SD Sederajat', '< 1.000.000', 1977);
 
 -- --------------------------------------------------------
 
@@ -173,7 +207,7 @@ CREATE TABLE `pendaftar` (
 --
 
 INSERT INTO `pendaftar` (`id_pendaftar`, `id_tapel`, `id_wali`, `id_ortu`, `id_jurusan`, `nama_lengkap`, `jk`, `nisn`, `nis`, `no_seri_ijazah`, `no_seri_skhun`, `no_un`, `nik`, `npsn_sekolah_asal`, `tmpt_lahir`, `tgl_lahir`, `agama`, `berkebutuhan_khusus`, `alamat_asal`, `dusun`, `rt_rw`, `desa`, `kecamatan`, `kota`, `provinsi`, `jenis_tinggal`, `no_telp_rumah`, `no_hp`, `email`, `no_kks`, `no_kps`, `alasan_layak`, `no_kip`, `nama_kip`, `alasan_tolak_kip`, `no_rek_akta_lahir`, `lintang`, `bujur`, `tinggi_badan`, `berat_badan`, `jarak_sekolah`, `waktu_tempuh_sekolah`, `jumlah_saudara`) VALUES
-(1, 2, 1, 1, 1, 'Nur Kholis', 'L', '1234567891', '1234567891', '1234567891', '1234567891', '1234567891', '12345678910', '1234567891', 'Sumenep', '2020-01-28', 'islam', 'Tidak', 'Kaduara Timur', 'Gunung', '08/08', 'Kaduara Timur', 'Pragaan', 'Sumenep', 'Jawa Timur', 'Tetap', '085233889578', '085233889578', 'fulan@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123, 60, '4', '00:00:04', 4);
+(1, 2, 1, 1, 1, 'Ferry', 'L', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', 'Sumenep', '2022-03-03', 'islam', 'Tidak', 'Kaduara Timur', 'Gunung', '08/08', 'Kaduara Timur', 'Pragaan', 'Sumenep', 'Jawa Timur', 'Tetap', '085233889578', '085233889578', 'nurkholispragaan@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 128, 60, '8', '00:00:30', 2);
 
 -- --------------------------------------------------------
 
@@ -193,7 +227,8 @@ CREATE TABLE `registrasi` (
 --
 
 INSERT INTO `registrasi` (`id_registrasi`, `id_pendaftar`, `tgl_registrasi`, `status`) VALUES
-(1, 1, '2021-01-08', '0');
+(1, 1, '2021-01-08', '0'),
+(2, 1, '2021-02-05', '0');
 
 -- --------------------------------------------------------
 
@@ -259,6 +294,7 @@ INSERT INTO `tapel` (`id_tapel`, `tapel`, `status`) VALUES
 
 CREATE TABLE `wali` (
   `id_wali` int(11) NOT NULL,
+  `id_pendaftar` int(11) DEFAULT NULL,
   `nama_wali` varchar(255) DEFAULT NULL,
   `pekerjaan_wali` varchar(100) DEFAULT NULL,
   `pendidikan_wali` varchar(100) DEFAULT NULL,
@@ -270,8 +306,8 @@ CREATE TABLE `wali` (
 -- Dumping data untuk tabel `wali`
 --
 
-INSERT INTO `wali` (`id_wali`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`, `penghasilan_wali`, `thn_wali`) VALUES
-(1, NULL, NULL, 'SD Sederajat', '< 1.000.000', NULL);
+INSERT INTO `wali` (`id_wali`, `id_pendaftar`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`, `penghasilan_wali`, `thn_wali`) VALUES
+(1, NULL, 'Amirul', 'Tani', 'SD Sederajat', '< 1.000.000', 1977);
 
 --
 -- Indexes for dumped tables
@@ -283,6 +319,12 @@ INSERT INTO `wali` (`id_wali`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`,
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`),
   ADD UNIQUE KEY `admin_email_admin_unique` (`email`);
+
+--
+-- Indeks untuk tabel `denah`
+--
+ALTER TABLE `denah`
+  ADD PRIMARY KEY (`id_denah`);
 
 --
 -- Indeks untuk tabel `jangka_daftar`
@@ -304,7 +346,8 @@ ALTER TABLE `jurusan`
 --
 ALTER TABLE `ortu`
   ADD PRIMARY KEY (`id_ortu`),
-  ADD UNIQUE KEY `ortu_pk` (`id_ortu`);
+  ADD UNIQUE KEY `ortu_pk` (`id_ortu`),
+  ADD KEY `di_pendaftar` (`di_pendaftar`);
 
 --
 -- Indeks untuk tabel `pendaftar`
@@ -344,7 +387,8 @@ ALTER TABLE `tapel`
 --
 ALTER TABLE `wali`
   ADD PRIMARY KEY (`id_wali`),
-  ADD UNIQUE KEY `wali_pk` (`id_wali`);
+  ADD UNIQUE KEY `wali_pk` (`id_wali`),
+  ADD KEY `id_pendaftar` (`id_pendaftar`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -355,6 +399,12 @@ ALTER TABLE `wali`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `denah`
+--
+ALTER TABLE `denah`
+  MODIFY `id_denah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `jangka_daftar`
@@ -384,13 +434,13 @@ ALTER TABLE `pendaftar`
 -- AUTO_INCREMENT untuk tabel `registrasi`
 --
 ALTER TABLE `registrasi`
-  MODIFY `id_registrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_registrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `struktur`
 --
 ALTER TABLE `struktur`
-  MODIFY `id_struktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_struktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `tapel`
@@ -409,6 +459,12 @@ ALTER TABLE `wali`
 --
 
 --
+-- Ketidakleluasaan untuk tabel `ortu`
+--
+ALTER TABLE `ortu`
+  ADD CONSTRAINT `ortu_ibfk_1` FOREIGN KEY (`di_pendaftar`) REFERENCES `pendaftar` (`id_pendaftar`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
 -- Ketidakleluasaan untuk tabel `pendaftar`
 --
 ALTER TABLE `pendaftar`
@@ -419,6 +475,12 @@ ALTER TABLE `pendaftar`
 --
 ALTER TABLE `struktur`
   ADD CONSTRAINT `struktur_ibfk_1` FOREIGN KEY (`id_atasan`) REFERENCES `struktur` (`id_struktur`);
+
+--
+-- Ketidakleluasaan untuk tabel `wali`
+--
+ALTER TABLE `wali`
+  ADD CONSTRAINT `wali_ibfk_1` FOREIGN KEY (`id_pendaftar`) REFERENCES `pendaftar` (`id_pendaftar`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
