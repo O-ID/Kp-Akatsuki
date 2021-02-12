@@ -30,6 +30,11 @@
 <script>
     $(function() {
         $('.usertable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {extend: 'print', text: 'Print Semua', className: 'btn btn-outline-primary btn-sm'},
+                {extend: 'print', text: 'Print Tidak Lulus', className: 'btn btn-outline-primary btn-sm'}
+            ],
             processing: true,
             serverSide: true,
             ajax: "{{route('admin.pendaftar.dataTable')}}",

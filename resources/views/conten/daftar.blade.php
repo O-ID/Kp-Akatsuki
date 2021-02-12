@@ -176,7 +176,7 @@
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Email</label>
                                         <input type="email" data-parsley-type="email" class="form-control  @error('email') has-danger @enderror" name="email" required autofocus>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="row pt-4">

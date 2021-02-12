@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\kontakkuc;
 use App\Struktur;
 use App\Denah;
 /*
@@ -48,6 +47,7 @@ Route::resource('/', 'kontakkuc', [
 Route::get('/kelulusan', 'kontakkuc@show')->name('pengunjung.kelulusan');
 Route::get('/daftar', 'kontakkuc@daftar')->name('pengunjung.daftar');
 Route::post('/daftar/store','kontakkuc@store')->name('form.formSubmit');
+Route::get('/daftar/pdf','kontakkuc@cetakPDF')->name('cetak.pdf.daftar');
 //adminzone
 Route::get('/register', function () {
     return view('page.register');

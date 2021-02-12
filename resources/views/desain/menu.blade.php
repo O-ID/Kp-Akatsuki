@@ -140,6 +140,8 @@
   <script src="{{ asset('assets/js/lib/daftar.min.js') }}"></script>
   <script src="{{ asset('assets/js/lib/menu.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/jasny-bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('assets/js/buttons.print.min.js') }}"></script>
 
   <script>
     $(document).ready(function() {

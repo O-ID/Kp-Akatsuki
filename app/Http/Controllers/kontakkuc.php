@@ -13,7 +13,7 @@ use App\modWali;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
+use PDF;
 use function GuzzleHttp\Promise\all;
 
 class kontakkuc extends Controller
@@ -138,7 +138,17 @@ class kontakkuc extends Controller
         $daptar->tgl_registrasi=$tgldaptar;
         $daptar->status=0;
         if($daptar->save()){
-            return redirect('/') -> with('status', 'Selamat '.$request->nama.' Dengan ID '.$daptar->id.' Pendaftaranmu Telah Kami Terima, Mohon Tunggu Pengumuman Selanjutnya.');
+            $jrr=modJurusan::select('nama_jurusan')->where('id_jurusan', $request->forjurusan)->get();
+            $dataff = [
+                'registrasi' => $daptar->id,
+                'nama'=> $request->nama,
+                'tetala' => $request->tmptlahirsiswa.', '.$request->tglLahir,
+                'jurusan' => $jrr[0]->nama_jurusan,
+                'tgldaftar' => $tgldaptar
+
+            ];
+            return view('page.buktidafta', $dataff);
+            //->redirect('/') -> with('status', 'Selamat '.$request->nama.' Dengan ID '.$daptar->id.' Pendaftaranmu Telah Kami Terima, Mohon Tunggu Pengumuman Selanjutnya.')
         }else{
             return redirect()->back();
         }
@@ -208,6 +218,28 @@ class kontakkuc extends Controller
         }else{
             return view('conten.daftar', compact('data'));
         }
+    }
+    public function cetakPDF()
+    {
+        // $jrr=modJurusan::all()->where('id_jurusan',1);
+        //     $dataff = [
+        //         'registrasi' => '123123123',
+        //         'nama'=> 'sahe odi',
+        //         'tetala' => 'Pamekasan, 11 November 1997',
+        //         'jurusan' => $jrr[0]->nama_jurusan,
+        //         'tgldaftar' => '13/12/2020'
+
+        //     ];
+        //     $pdf = PDF::loadView('page.buktidafta', $dataff);
+        //     $pdf->setOptions([
+        //         'dpi' => 100,
+        //         'defaultPaperSize'=>"a4"
+        //     ]);
+        //     return $pdf->stream('test.pdf');
+        // return view('page.buktidafta', $dataff);
+        // $jrr=modJurusan::select('nama_jurusan')->where('id_jurusan', 4)->get();
+        // return $jrr[0]->nama_jurusan;
+        return redirect('/');
     }
 
 }
