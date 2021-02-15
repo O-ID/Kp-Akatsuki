@@ -99,4 +99,11 @@ Route::prefix('/admin')->group( function() {
         Route::get('/', 'PendaftarController@index')->name('admin.pendaftar.index');
         Route::get('/status/{id}/{status}', 'PendaftarController@status')->name('admin.pendaftar.status');
     });
+
+    //print
+    Route::prefix('/print')->group( function() {
+        Route::get('/a', 'PrintController@printall')->name('admin.print.all');
+        Route::get('/l/{id}', 'PrintController@kelulusan')->name('admin.print.kelulusan');
+        Route::get('/p/{id}', 'PrintController@pksprint')->name('admin.print.pksprint');
+    });
 });

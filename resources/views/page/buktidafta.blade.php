@@ -4,7 +4,7 @@
 {{-- <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> --}}
 <meta charset="utf-8" />
 {{-- <meta http-equiv="Content-Type" content="charset=utf-8"/> --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ asset('assets/css/material-dashboard-pro.min.css?v=2.1.0') }}">
 </head>
 
 <body style="margin: 0;" class="d-none d-print-block" onload="window.print()">
