@@ -28,7 +28,23 @@
                         <td>{{ $datas->nama_lengkap }}</td>
                         <td>{{ $datas->nama_jurusan }}</td>
                         <td>{{ $datas->tgl_registrasi }}</td>
-                        <td class="text-warning">{{ $datas->status==0?'Menunggu Konfirmasi':'Lulus' }}</td>
+                        <td class="
+                            @if( $datas->status == 0 )
+                                text-default
+                            @elseif($datas->status == 1)
+                                text-primary
+                            @else
+                                text-warning
+                            @endif
+                        ">
+                            @if( $datas->status == 0 )
+                                Menunggu Konfirmasi
+                            @elseif($datas->status == 1)
+                                Lulus
+                            @else
+                                Gagal
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
