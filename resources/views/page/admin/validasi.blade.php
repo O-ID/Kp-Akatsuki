@@ -22,6 +22,18 @@
                                 <a class="dropdown-item" href="{{ route('admin.print.pksprint', ['id'=>2]) }}">Tidak Terima PKS</a>
                             </div>
                         </div>
+                        
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Export
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ route('admin.export.pendaftar') }}">Semua</a>
+                                <a class="dropdown-item" href="{{ route('admin.export.pendaftar', ['status' => '1' ]) }}">Lulus</a>
+                                <a class="dropdown-item" href="{{ route('admin.export.pendaftar', ['status' => '0' ]) }}">Tidak Lulus</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table usertable">

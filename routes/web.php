@@ -106,4 +106,8 @@ Route::prefix('/admin')->group( function() {
         Route::get('/l/{id}', 'PrintController@kelulusan')->name('admin.print.kelulusan');
         Route::get('/p/{id}', 'PrintController@pksprint')->name('admin.print.pksprint');
     });
+    
+    Route::prefix('/export')->group( function() {
+        Route::get('/pendaftar', 'ExportController@pendaftar')->name('admin.export.pendaftar');
+    });
 });
