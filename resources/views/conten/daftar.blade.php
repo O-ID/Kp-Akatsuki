@@ -2,6 +2,22 @@
 @section('halaman', 'Pendaftaran')
 @section('content')
 <section>
+    <script>
+        function huruf(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if ((charCode < 65 || charCode > 90)&&(charCode < 97 || charCode > 122) && charCode > 32) {
+                return false;
+            }
+            return true;
+        }
+        function angka(evt){
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if ((charCode < 48 || charCode > 57)&&charCode>32){
+                return false;
+            }
+            return true;
+        }
+    </script>
     <div class="row ld ld-throw-btt-in">
         <div class="card card-chart">
             <div class="card-header card-header-primary">
@@ -46,7 +62,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="bmd-label-floating">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama" required autofocus>
+                                <input type="text" class="form-control" name="nama" id="namadaf" onkeypress="return huruf(event)" required autofocus>
                                 <div class="row pt-4">
                                     <div class="col-sm-8">
                                         <label class="bmd-label-floating">Alamat Tempat Tinggal</label>
@@ -159,13 +175,13 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating pt-4">No. Telpon Rumah</label>
-                                        <input type="text" class="form-control" name="notelprumahsiswa" required>
+                                        <input type="text" class="form-control" name="notelprumahsiswa" onkeypress="return angka(event)" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating pt-4">No.Hp</label>
-                                        <input type="text" class="form-control" name="nohpsiswa" required>
+                                        <input type="text" class="form-control" name="nohpsiswa" onkeypress="return angka(event)" required>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +198,7 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">NIK KTP</label>
-                                        <input type="text" class="form-control" name="nikktp" required>
+                                        <input type="text" class="form-control" name="nikktp" onkeypress="return angka(event)" required>
                                     </div>
                                 </div>
                                 <div class="row pt-4">
@@ -301,7 +317,7 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <label class="bmd-label-floating">Nama Ayah</label>
-                                        <input type="text" class="form-control" name="namaayah" required autofocus>
+                                        <input type="text" class="form-control" name="namaayah" onkeypress="return huruf(event)" required autofocus>
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="bmd-label-floating">Tahun Lahir Ayah</label>
@@ -357,7 +373,7 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <label class="bmd-label-floating">Nama Ibu</label>
-                                        <input type="text" class="form-control" name="namaibu" required >
+                                        <input type="text" class="form-control" name="namaibu" onkeypress="return huruf(event)" required >
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="bmd-label-floating">Tahun Lahir Ibu</label>
@@ -417,7 +433,7 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <label class="bmd-label-floating">Nama Wali</label>
-                                        <input type="text" class="form-control" name="namawali" placeholder="*Isian ini boleh kosong">
+                                        <input type="text" class="form-control" name="namawali" onkeypress="return huruf(event)" placeholder="*Isian ini boleh kosong">
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="bmd-label-floating">Tahun Lahir Wali</label>

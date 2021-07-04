@@ -10,6 +10,7 @@ use App\modPendaftar;
 use App\modRegistrasi;
 use App\modTapel;
 use App\modWali;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -49,11 +50,18 @@ class kontakkuc extends Controller
      */
     public function store(Request $request)
     {
+        // var_dump($request->all());
+        // echo json_encode($request->all());
         $this->validate($request, [
             // 'nikktp' => 'required|unique:pendaftar',
             'email' => 'required|email|unique:pendaftar',
         ]);
-
+        $now=Carbon::now()->year-Carbon::createFromFormat('Y-m-d', $request->tglLahir)->year;
+        echo $now;
+        if($now < 15){
+            return redirect('/')->with('errorr','Umur Anda '.$now.' Tahun, Tidak Memenuhi Persyaratan Sekolah');
+            echo 'sini';
+        }
         //table ortu
         $ortu=new modOrtu();
         $ortu->nama_ayah=$request->namaayah;
@@ -152,8 +160,7 @@ class kontakkuc extends Controller
         }else{
             return redirect()->back();
         }
-        // return $request->all();
-
+        return $request->all();
     }
 
     /**

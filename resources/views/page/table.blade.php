@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="tableuser">
                 <thead class=" text-primary">
                     <th>No</th>
                     <th>ID Pendaftaran</th>
@@ -54,4 +54,13 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $('#tableuser').DataTable({
+            "aoColumnDefs": [
+                { "bSearchable": false, "aTargets": [ 0, 3, 4, 5 ] }
+            ]
+        });
+    });
+</script>
 @endsection
