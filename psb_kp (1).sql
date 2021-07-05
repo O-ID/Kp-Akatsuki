@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Mar 2021 pada 11.31
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.2
+-- Waktu pembuatan: 05 Jun 2021 pada 03.41
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 

@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard-pro.min.css?v=2.1.0') }}">
 </head>
 
-<body style="margin: 0;" class="d-none d-print-block" onload="window.print()">
+<body style="margin: 0;" class="d-print-block" onload="window.print()">
 
-<div id="p1" style="overflow: hidden; position: relative; background-color: white; width: 935px; height: 1210px;">
+<div id="p1" style=" position: relative; background-color: white; width: 935px; height: 1210px;">
 
 <!-- Begin shared CSS values -->
 <style class="shared-css" type="text/css" >

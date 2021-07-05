@@ -52,15 +52,16 @@ class kontakkuc extends Controller
     {
         // var_dump($request->all());
         // echo json_encode($request->all());
-        $this->validate($request, [
-            // 'nikktp' => 'required|unique:pendaftar',
-            'email' => 'required|email|unique:pendaftar',
-        ]);
+        // $this->validate($request, [
+        //     // 'nikktp' => 'required|unique:pendaftar',
+        //     'email' => 'required|email|unique:pendaftar',
+        // ]);
         $now=Carbon::now()->year-Carbon::createFromFormat('Y-m-d', $request->tglLahir)->year;
-        echo $now;
+        // echo $request->tglLahir;
+        // echo $now;
+        // return;
         if($now < 15){
             return redirect('/')->with('errorr','Umur Anda '.$now.' Tahun, Tidak Memenuhi Persyaratan Sekolah');
-            echo 'sini';
         }
         //table ortu
         $ortu=new modOrtu();
@@ -107,6 +108,7 @@ class kontakkuc extends Controller
         $data->no_un=$request->nunasional;
         $data->nik=$request->nikktp;
         $data->npsn_sekolah_asal=$request->npsn;
+        $data->nama_sekolah_asal=$request->nama_sekolah_asal;
         $data->tmpt_lahir=$request->tmptlahirsiswa;
         $data->tgl_lahir=$request->tglLahir;
         $data->agama=$request->foragama;

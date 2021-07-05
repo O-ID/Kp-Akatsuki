@@ -71,6 +71,7 @@ class PendaftarController extends Controller
             join('registrasi', 'registrasi.id_pendaftar', '=', 'pendaftar.id_pendaftar')
             ->join('jurusan', 'jurusan.id_jurusan', '=', 'pendaftar.id_jurusan')
             ->join('ortu', 'ortu.id_ortu', '=', 'pendaftar.id_ortu')
+            ->leftJoin('wali', 'wali.id_wali', '=', 'pendaftar.id_wali')
             ->where('registrasi.id_registrasi', $id)->get();
             // $data=$data[0];
             // echo json_encode($data);

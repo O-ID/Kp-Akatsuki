@@ -245,7 +245,7 @@
                                 <div class="row pt-4">
                                     <div class="col-sm-12">
                                         <label class="bmd-label-floating">Nama Sekolah Asal</label>
-                                        <input class="form-control" type="text" placeholder="*Diisikan Data Dari Jenjang Sebelumnya" name="namasekolah" required autofocus>
+                                        <input class="form-control" type="text" placeholder="*Diisikan Data Dari Jenjang Sebelumnya" name="nama_sekolah_asal" required autofocus>
                                     </div>
                                 </div>
                             </div>
