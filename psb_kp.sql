@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2021 pada 03.41
+-- Waktu pembuatan: 05 Jul 2021 pada 08.45
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.26
 
@@ -98,7 +98,7 @@ CREATE TABLE `jangka_daftar` (
 --
 
 INSERT INTO `jangka_daftar` (`id_jangkar`, `id_tapel`, `mulai`, `selesai`) VALUES
-(1, 2, '2021-01-07', '2021-06-21'),
+(1, 2, '2021-07-01', '2021-07-31'),
 (2, 1, '2018-12-01', '2019-01-30');
 
 -- --------------------------------------------------------
@@ -143,15 +143,6 @@ CREATE TABLE `ortu` (
   `thn_lahir_ibu` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `ortu`
---
-
-INSERT INTO `ortu` (`id_ortu`, `di_pendaftar`, `nama_ayah`, `pekerjaan_ayah`, `kebutuhan_khusus_ayah`, `pendidikan_ayah`, `penghasilan_ayah`, `thn_lahir_ayah`, `nama_ibu`, `kebutuhan_khusus_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `thn_lahir_ibu`) VALUES
-(1, NULL, 'Amirul', 'Tani', 'Tidak', 'SD Sederajat', '< 1.000.000', 1977, 'Mukminah', 'Tidak', 'Tani', 'SD Sederajat', '< 1.000.000', 1977),
-(2, NULL, 'Amirul', 'Tani', 'Tidak', 'SMA Sederajat', '2 Juta - 3 Juta', 1998, 'Mukminah', 'Tidak', 'Tani', 'SMA Sederajat', '< 1.000.000', 1998),
-(3, NULL, 'Amirul', 'Tani', 'Tidak', 'SD Sederajat', '< 1.000.000', 1998, 'Mukminah', 'Tidak', 'Tani', 'SD Sederajat', '< 1.000.000', 1999);
-
 -- --------------------------------------------------------
 
 --
@@ -172,6 +163,7 @@ CREATE TABLE `pendaftar` (
   `no_seri_skhun` varchar(20) DEFAULT NULL,
   `no_un` varchar(20) DEFAULT NULL,
   `nik` varchar(20) DEFAULT NULL,
+  `nama_sekolah_asal` varchar(40) DEFAULT NULL,
   `npsn_sekolah_asal` varchar(20) DEFAULT NULL,
   `tmpt_lahir` varchar(100) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
@@ -204,15 +196,6 @@ CREATE TABLE `pendaftar` (
   `jumlah_saudara` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pendaftar`
---
-
-INSERT INTO `pendaftar` (`id_pendaftar`, `id_tapel`, `id_wali`, `id_ortu`, `id_jurusan`, `nama_lengkap`, `jk`, `nisn`, `nis`, `no_seri_ijazah`, `no_seri_skhun`, `no_un`, `nik`, `npsn_sekolah_asal`, `tmpt_lahir`, `tgl_lahir`, `agama`, `berkebutuhan_khusus`, `alamat_asal`, `dusun`, `rt_rw`, `desa`, `kecamatan`, `kota`, `provinsi`, `jenis_tinggal`, `no_telp_rumah`, `no_hp`, `email`, `no_kks`, `no_kps`, `alasan_layak`, `no_kip`, `nama_kip`, `alasan_tolak_kip`, `no_rek_akta_lahir`, `lintang`, `bujur`, `tinggi_badan`, `berat_badan`, `jarak_sekolah`, `waktu_tempuh_sekolah`, `jumlah_saudara`) VALUES
-(1, 2, 1, 1, 1, 'Ferry', 'L', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', '12345678910', 'Sumenep', '2022-03-03', 'islam', 'Tidak', 'Kaduara Timur', 'Gunung', '08/08', 'Kaduara Timur', 'Pragaan', 'Sumenep', 'Jawa Timur', 'Tetap', '085233889578', '085233889578', 'nurkholispragaan@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 128, 60, '8', '00:00:30', 2),
-(2, 2, 2, 2, 1, 'Naufal', 'L', '1234567891', '1234567891', '1234567891', '1234567891', '1234567891', '12345678910', '1234567891', 'sumenep', '2020-06-25', 'islam', 'Tidak', 'Pamekasan', 'Menteng', '08/08', 'Pademawu', 'Pragaan', 'sumenep', 'jawatimur', 'Tetap', '085233889578', '085233889578', 'naufal@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 128, 90, '8', '00:00:10', 2),
-(3, 2, 3, 3, 1, 'nur kholis', 'L', '1234567891', '1234567891', '1234567891', '1234567891', '1234567891', '12345678910', '1234567891', 'sumenep', '2020-01-08', 'islam', 'Tidak', 'Kaduara Timur', 'Gunung', '/', 'Kaduara Timur', 'Pragaan', 'sumenep', 'jawatimur', 'Tetap', '085233889578', '085233889578', 'ww@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123, 11, '11', '00:00:11', 11);
-
 -- --------------------------------------------------------
 
 --
@@ -225,16 +208,6 @@ CREATE TABLE `registrasi` (
   `tgl_registrasi` date DEFAULT NULL,
   `status` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `registrasi`
---
-
-INSERT INTO `registrasi` (`id_registrasi`, `id_pendaftar`, `tgl_registrasi`, `status`) VALUES
-(1, 1, '2021-01-08', '1'),
-(2, 1, '2021-02-05', '2'),
-(3, 2, '2021-02-13', '2'),
-(4, 3, '2021-02-13', '0');
 
 -- --------------------------------------------------------
 
@@ -307,15 +280,6 @@ CREATE TABLE `wali` (
   `penghasilan_wali` varchar(100) DEFAULT NULL,
   `thn_wali` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `wali`
---
-
-INSERT INTO `wali` (`id_wali`, `id_pendaftar`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`, `penghasilan_wali`, `thn_wali`) VALUES
-(1, NULL, 'Amirul', 'Tani', 'SD Sederajat', '< 1.000.000', 1977),
-(2, NULL, 'Amirul', 'Tani', 'SMA Sederajat', '< 1.000.000', 1998),
-(3, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -430,19 +394,19 @@ ALTER TABLE `jurusan`
 -- AUTO_INCREMENT untuk tabel `ortu`
 --
 ALTER TABLE `ortu`
-  MODIFY `id_ortu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ortu` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pendaftar`
 --
 ALTER TABLE `pendaftar`
-  MODIFY `id_pendaftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pendaftar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `registrasi`
 --
 ALTER TABLE `registrasi`
-  MODIFY `id_registrasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_registrasi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `struktur`
@@ -460,7 +424,7 @@ ALTER TABLE `tapel`
 -- AUTO_INCREMENT untuk tabel `wali`
 --
 ALTER TABLE `wali`
-  MODIFY `id_wali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_wali` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
