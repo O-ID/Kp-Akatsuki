@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\modPendaftar;
 use App\modRegistrasi;
+use App\modJurusan;
+use App\modOrtu;
 use DataTables;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Contracts\DataTable;
@@ -36,6 +38,10 @@ class PendaftarController extends Controller
         return FacadesDataTables::of($data)
         ->addColumn('action', function ($data) {
             return '
+            <a href="'. route('admin.pendaftar.edit', $data->id_pendaftar) .'" rel="tooltip" title="" class="btn btn-warning btn-link btn-sm" data-original-title="Edit Data Pendaftar">
+                <i class="material-icons">edit</i>
+                <div class="ripple-container"></div>
+            </a>
             <a href="'. route('admin.pendaftar.status', [$data->id_registrasi, "3"]) .'" rel="tooltip" title="" class="btn btn-success btn-link btn-sm" data-original-title="Lihat Data Pendaftar">
                 <i class="material-icons">visibility</i>
                 <div class="ripple-container"></div>
@@ -82,5 +88,69 @@ class PendaftarController extends Controller
             $modRegistrasi->save();
             return redirect()->back();
         }
+    }
+
+    public function edit($id)
+    {
+        $jurusan = modJurusan::get();
+        $edit = modPendaftar::join('registrasi', 'registrasi.id_pendaftar', '=', 'pendaftar.id_pendaftar')
+        ->join('jurusan', 'jurusan.id_jurusan', '=', 'pendaftar.id_jurusan')
+        ->join('ortu', 'ortu.id_ortu', '=', 'pendaftar.id_ortu')
+        ->first();
+        // dd($jurusan);
+        return view('page.admin.form_pendaftar', [
+            'edit' => $edit,
+            'jurusan' => $jurusan,
+        ]);
+    }
+
+    public function putPokok($id, Request $request)
+    {
+        $data = modPendaftar::find($id);
+        $data->id_jurusan = $request->id_jurusan;
+        $data->nama_lengkap = $request->nama_lengkap;
+        $data->alamat_asal = $request->alamat_asal;
+        $data->rt_rw = $request->rt .'/'. $request->rw;
+        $data->dusun = $request->dusun;
+        $data->desa = $request->desa;
+        $data->kecamatan = $request->kecamatan;
+        $data->kota = $request->kota;
+        $data->tmpt_lahir = $request->tmpt_lahir;
+        $data->tgl_lahir = $request->tgl_lahir;
+        $data->jk = $request->jk;
+        $data->agama = $request->agama;
+        $data->no_telp_rumah = $request->no_telp_rumah;
+        $data->no_hp = $request->no_hp;
+        $data->email = $request->email;
+        $data->save();
+        
+        return redirect()->back();
+    }
+
+    public function putOrtu($id, Request $request)
+    {
+        $this->validate($request, [
+            'thn_lahir_ayah' => 'required|min:4|numeric',
+            'thn_lahir_ibu' => 'required|min:4|numeric',
+        ]);
+        $pendaftar = modPendaftar::find($id);
+        $data = modOrtu::find($pendaftar->id_pendaftar);
+
+        $data->nama_ayah = $request->nama_ayah;
+        $data->pekerjaan_ayah = $request->pekerjaan_ayah;
+        $data->kebutuhan_khusus_ayah = $request->kebutuhan_khusus_ayah;
+        $data->pendidikan_ayah = $request->pendidikan_ayah;
+        $data->penghasilan_ayah = $request->penghasilan_ayah;
+        $data->thn_lahir_ayah = $request->thn_lahir_ayah;
+
+        $data->nama_ibu = $request->nama_ibu;
+        $data->pekerjaan_ibu = $request->pekerjaan_ibu;
+        $data->kebutuhan_khusus_ibu = $request->kebutuhan_khusus_ibu;
+        $data->pendidikan_ibu = $request->pendidikan_ibu;
+        $data->penghasilan_ibu = $request->penghasilan_ibu;
+        $data->thn_lahir_ibu = $request->thn_lahir_ibu;
+        $data->save();
+
+        return redirect()->back();
     }
 }

@@ -98,6 +98,9 @@ Route::prefix('/admin')->group( function() {
         Route::get('/table', 'PendaftarController@dataTable')->name('admin.pendaftar.dataTable');
         Route::get('/', 'PendaftarController@index')->name('admin.pendaftar.index');
         Route::get('/status/{id}/{status}', 'PendaftarController@status')->name('admin.pendaftar.status');
+        Route::get('/form/{id}', 'PendaftarController@edit')->name('admin.pendaftar.edit');
+        Route::put('/pokok/{id}', 'PendaftarController@putPokok')->name('admin.pendaftar.put.pokok');
+        Route::put('/ortu/{id}', 'PendaftarController@putOrtu')->name('admin.pendaftar.put.ortu');
     });
 
     //print
